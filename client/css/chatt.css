@@ -1,0 +1,183 @@
+/****************************/
+/** 	Variables
+/****************************/
+/****************************/
+/**		Mixin
+/***************************/
+/****************************/
+/**		Utilities
+/***************************/
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.icon {
+  font-family: "fontello";
+  background-image: none;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+}
+
+input[type="submit"], input[type="button"], button, select {
+  outline: 0;
+}
+
+.brad-top {
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+
+.brad-top-left {
+  -webkit-border-radius: 3px 0 0 0;
+  -moz-border-radius: 3px 0 0 0;
+  -ms-border-radius: 3px 0 0 0;
+  -o-border-radius: 3px 0 0 0;
+  border-radius: 3px 0 0 0;
+}
+
+.brad-top-right {
+  -webkit-border-radius: 0 3px 0 0;
+  -moz-border-radius: 0 3px 0 0;
+  -ms-border-radius: 0 3px 0 0;
+  -o-border-radius: 0 3px 0 0;
+  border-radius: 0 3px 0 0;
+}
+
+.brad-bottom {
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  -ms-border-radius: 0 0 3px 3px;
+  -o-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+}
+
+.brad-bottom-left {
+  -webkit-border-radius: 0 0 0 3px;
+  -moz-border-radius: 0 0 0 3px;
+  -ms-border-radius: 0 0 0 3px;
+  -o-border-radius: 0 0 0 3px;
+  border-radius: 0 0 0 3px;
+}
+
+.brad-bottom-right {
+  -webkit-border-radius: 0 0 3px 0;
+  -moz-border-radius: 0 0 3px 0;
+  -ms-border-radius: 0 0 3px 0;
+  -o-border-radius: 0 0 3px 0;
+  border-radius: 0 0 3px 0;
+}
+
+/****************************/
+/**		Layout
+/***************************/
+html, body {
+  height: 100%;
+  position: relative;
+}
+
+body {
+  font-family: open-sans, sans-serif;
+}
+
+#wrapper .app-content .chatt-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 1em 0;
+  background: #fafafa;
+}
+#wrapper .app-content .chatt-input-container #chatt-input {
+  position: relative;
+}
+#wrapper .app-content .chatt-input-container #chatt-input .chatt-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 2;
+}
+#wrapper .app-content .chatt-input-container #chatt-input .chatt-input {
+  background: transparent;
+  padding: 0 0 0 3em;
+  margin: 0;
+  border: 0;
+  width: 100%;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+#wrapper .app-content .chatt-input-container #chatt-input.focus .chatt-name {
+  top: 1.5em;
+}
+#wrapper .app-content .chatt-input-container #chatt-input.focus .chatt-input {
+  line-height: 2;
+  font-size: 2em;
+}
+
+.transition {
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  -o-transition: all 0.3s !important;
+  transition: all 0.3s !important;
+}
+.transition.from-top {
+  opacity: 0;
+  -webkit-transform: translateY(-60%);
+  -moz-transform: translateY(-60%);
+  -ms-transform: translateY(-60%);
+  -o-transform: translateY(-60%);
+  transform: translateY(-60%);
+}
+.transition.from-left {
+  opacity: 0;
+  -webkit-transform: translateX(-101%);
+  -moz-transform: translateX(-101%);
+  -ms-transform: translateX(-101%);
+  -o-transform: translateX(-101%);
+  transform: translateX(-101%);
+}
+.transition.center {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.transition.superscale {
+  -webkit-transform: scale(2);
+  -moz-transform: scale(2);
+  -ms-transform: scale(2);
+  -o-transform: scale(2);
+  transform: scale(2);
+}
+.transition.scale {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+.transition.removing {
+  background: #f56f6c !important;
+  color: #fafafa;
+}

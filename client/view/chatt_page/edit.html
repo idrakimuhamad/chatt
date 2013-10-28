@@ -1,0 +1,40 @@
+<template name="edit">
+	<div class="main-content">
+		<div class="edit hero">
+			<h3>Edit</h3>
+			<small>Note : The editor in description and solution support <a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown</a> and some HTML.</small>
+			<span class="close" title="Cancel"><i class="icon">e</i></span>
+			<form id="edit-kb">
+				<div class="controls">
+					<div class="input-line title span12">
+						<input type="text" class="kb-title input-block-level" placeholder="Knowledge Title" value="{{title}}">
+					</div>
+				</div>
+				<div class="controls">
+					<div class="descriptions input-line span12">
+						<div class="description">
+							<textarea name="description" rows="5" placeholder="Description">{{summary}}</textarea>
+						</div>
+						<div class="solution">
+							<textarea name="solutions" id="solutions" rows="5" placeholder="Solution">{{details}}</textarea>
+						</div>
+					</div>
+				</div>
+				<div class="controls">
+					<div class="input-line tags span12">
+						{{#each tag}}
+						<span class="tag" data-tag="{{_id}}">{{tag_name}} <span class="cancel"><i class="icon">e</i></span></span>
+						{{/each}}
+						<input type="text" class="kb-tag" placeholder="Add Tag">
+					</div>
+				</div>
+				<div class="controls submit">
+					<div class="input-line submission span12">
+						<input type="button" class="btn btn-success pull-left" value="Save">
+						<input type="button" class="btn pull-right cancel" value="Cancel">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</template>

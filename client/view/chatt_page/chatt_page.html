@@ -1,0 +1,37 @@
+<template name="chatt_page">
+	<div class="container-fluid">
+	    <div class="row-fluid">
+	        <div class="chatt-body-container span6 offset3">
+	            <header>
+	                <h2>{{chatt_name}}</h2>
+	            </header>
+	            <div class="chatt-body">
+	                <ul class="chatt-dialogs">
+                        {{#each chatt}}
+                        <li class="dialog">{{dialog}}</li>
+                        {{/each}}
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+	<div class="chatt-input-container">
+	    <div class="container-fluid">
+	        <div class="row-fluid">
+                <div class="span6 offset3">
+                    <div class="chatt-input-inner">
+                        {{#if no_name_yet}}
+                        <input type="text" class="add-name" placeholder="Your Chatt Name">
+                        {{else}}
+                        <div id="chatt-input" class="">
+                            <span class="chatt-name">{{chatter_name}}</span>
+                            <input type="text" class="chatt-input" placeholder="Type and enter!">
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+	        </div>
+	    </div>
+	</div>
+</template>
