@@ -129,6 +129,30 @@ body {
 
 #wrapper {
     .app-content {
+        position:relative;
+        .for-ie {
+            position: absolute;
+            top: 3em;
+            left : 3em;
+            width : 150px;
+            font-size: .8em;
+        }
+        .chatt-body-container {
+            .chatt-body {
+                .chatt-dialogs {
+                    margin: 0;
+                    padding: 0 0 10em;
+                    list-style: none;
+                    
+                    .dialogs {
+                        margin: .5em 0;
+                        .chatter-name {
+                            margin-right: 1em;
+                        }
+                    }
+                }
+            }
+        }
         .chatt-input-container {
             position: fixed;
             bottom: 0;
@@ -138,31 +162,52 @@ body {
             padding: 1em 0;
             background: $gray;
             
-            #chatt-input {
-                position: relative;
-                .chatt-name {
-                    position:absolute;
-                    top: 0;
-                    left: 0;
-                    line-height: 2;
-                }
-                .chatt-input {
+            .chatt-input-inner {
+                .add-name {
                     background: transparent;
-                    padding: 0 0 0 3em;
+                    background: #aaa\9;
+                    padding: 0;
                     margin: 0;
                     border: 0;
                     width: 100%;
+                    font-size: 2em;
+                    line-height: 2;
+                    height: 2em;
+                    @include box-shadow(none);
+                    @include transition(all .25s linear);
+                }
+            }
+            
+            #chatt-input {
+                position: relative;
+                .chatt-name {
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    line-height: 2;
+                    margin-right: 2em;
+                }
+                .chatt-input {
+                    background: transparent;
+                    background: #aaa\9;
+                    padding: 0;
+                    margin: 0;
+                    border: 0;
+                    width: 80%;
+                    height: 2em;
                     @include box-shadow(none);
                     @include transition(all .25s linear);
                 }
                 
                 &.focus {
                     .chatt-name {
-                        top: 1.5em;
+//                        top: 1em;
                     }
                     .chatt-input {
                         line-height: 2;
                         font-size: 2em;
+                        height: 2em;
+                        padding: 0;
                     }
                 }
             }

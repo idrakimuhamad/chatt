@@ -92,6 +92,27 @@ body {
   font-family: open-sans, sans-serif;
 }
 
+#wrapper .app-content {
+  position: relative;
+}
+#wrapper .app-content .for-ie {
+  position: absolute;
+  top: 3em;
+  left: 3em;
+  width: 150px;
+  font-size: .8em;
+}
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs {
+  margin: 0;
+  padding: 0 0 10em;
+  list-style: none;
+}
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialogs {
+  margin: .5em 0;
+}
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialogs .chatter-name {
+  margin-right: 1em;
+}
 #wrapper .app-content .chatt-input-container {
   position: fixed;
   bottom: 0;
@@ -101,21 +122,16 @@ body {
   padding: 1em 0;
   background: #fafafa;
 }
-#wrapper .app-content .chatt-input-container #chatt-input {
-  position: relative;
-}
-#wrapper .app-content .chatt-input-container #chatt-input .chatt-name {
-  position: absolute;
-  top: 0;
-  left: 0;
-  line-height: 2;
-}
-#wrapper .app-content .chatt-input-container #chatt-input .chatt-input {
+#wrapper .app-content .chatt-input-container .chatt-input-inner .add-name {
   background: transparent;
-  padding: 0 0 0 3em;
+  background: #aaaaaa \9;
+  padding: 0;
   margin: 0;
   border: 0;
   width: 100%;
+  font-size: 2em;
+  line-height: 2;
+  height: 2em;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -124,12 +140,37 @@ body {
   -o-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
-#wrapper .app-content .chatt-input-container #chatt-input.focus .chatt-name {
-  top: 1.5em;
+#wrapper .app-content .chatt-input-container #chatt-input {
+  position: relative;
+}
+#wrapper .app-content .chatt-input-container #chatt-input .chatt-name {
+  position: relative;
+  top: 0;
+  left: 0;
+  line-height: 2;
+  margin-right: 2em;
+}
+#wrapper .app-content .chatt-input-container #chatt-input .chatt-input {
+  background: transparent;
+  background: #aaaaaa \9;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: 80%;
+  height: 2em;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
 }
 #wrapper .app-content .chatt-input-container #chatt-input.focus .chatt-input {
   line-height: 2;
   font-size: 2em;
+  height: 2em;
+  padding: 0;
 }
 
 .transition {

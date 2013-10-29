@@ -1,4 +1,13 @@
 Session.setDefault('chatt_name', null);
+Session.set('current_chatter', null);
+
+Template.chatt_page.rendered = function() {
+    $(window).scrollTop($(document).height());
+    
+    /*@cc_on
+	$('.for-ie').text('Yo IE user. Type in your name at the grey box and press enter. After that, to chat, type in your stuff in the grey box and press enter. Aaaand Chrome is the winner.');
+	@*/
+}
 
 Template.chatt_page.helpers({
 	no_name_yet : function() {
@@ -12,12 +21,25 @@ Template.chatt_page.helpers({
             dialogs = dialogs[0].dialogs;
         if(dialogs)
             return dialogs;
+    },
+//    not_the_current_chatter : function() {
+//        
+//        if( this.chatter === Session.get('current_chatter') ) {
+//            return false;
+//        } else {
+//            Session.set('current_chatter', this.chatter);
+//            return true;
+//        }
+//    },
+    focus : function() {
+        return Session.get('on_focus') ? 'focus' : '';
     }
 });
 
 Template.chatt_page.events({
     'focus .chatt-input' : function(e,t) {
-        $(t.find('#chatt-input')).addClass('focus');
+        Session.set('on_focus', true);
+        $(e.currentTarget).select();
     },
 	'keyup .add-name' : function(e,t) {
         if(e.which === 13) {
@@ -28,7 +50,7 @@ Template.chatt_page.events({
                 Session.set('chatt_name', name);
         }
     },
-    'keyup .chat-input' : function(e,t) {
+    'keyup .chatt-input' : function(e,t) {
         if(e.which === 13) {
             e.preventDefault();
             createDialog(t);
@@ -50,8 +72,7 @@ function createDialog(template) {
             }
         }, function(err) {
             if(!err) {
-                template.find('.chat-inputt').value = '';
-                template.find('.chat-inputt').focus();
+                $('.chatt-input').val('').select();
             }
         });
     }

@@ -1,4 +1,5 @@
 <template name="chatt_page">
+	<div class="for-ie"></div>
 	<div class="container-fluid">
 	    <div class="row-fluid">
 	        <div class="chatt-body-container span6 offset3">
@@ -7,9 +8,16 @@
 	            </header>
 	            <div class="chatt-body">
 	                <ul class="chatt-dialogs">
+                        {{#isolate}}
                         {{#each chatt}}
-                        <li class="dialog">{{dialog}}</li>
+                        <li class="dialog">
+                            <span class="chatter-name">
+                            {{chatter}} :
+                            </span>
+                            {{dialog}}
+                        </li>
                         {{/each}}
+                        {{/isolate}}
 	                </ul>
 	            </div>
 	        </div>
@@ -24,10 +32,13 @@
                         {{#if no_name_yet}}
                         <input type="text" class="add-name" placeholder="Your Chatt Name">
                         {{else}}
-                        <div id="chatt-input" class="">
-                            <span class="chatt-name">{{chatter_name}}</span>
+                        
+                        {{#isolate}}
+                        <div id="chatt-input" class="{{focus}}">
+                            <span class="chatt-name">@{{chatter_name}}</span>
                             <input type="text" class="chatt-input" placeholder="Type and enter!">
                         </div>
+                        {{/isolate}}
                         {{/if}}
                     </div>
                 </div>
