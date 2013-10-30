@@ -107,11 +107,24 @@ body {
   padding: 0 0 10em;
   list-style: none;
 }
-#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialogs {
-  margin: .5em 0;
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog {
+  margin: 1em 0;
+  position: relative;
+  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 1em;
 }
-#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialogs .chatter-name {
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatter-name {
   margin-right: 1em;
+}
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatt-dialog {
+  width: 90%;
+  display: inline-block;
+}
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatt-time {
+  position: absolute;
+  right: 0;
+  font-size: .8em;
 }
 #wrapper .app-content .chatt-input-container {
   position: fixed;
@@ -121,6 +134,10 @@ body {
   width: 100%;
   padding: 1em 0;
   background: #fafafa;
+}
+#wrapper .app-content .chatt-input-container .chatt-input-inner .not-connected {
+  font-size: 1.2em;
+  color: #f56f6c;
 }
 #wrapper .app-content .chatt-input-container .chatt-input-inner .add-name {
   background: transparent;

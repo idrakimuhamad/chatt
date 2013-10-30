@@ -144,10 +144,23 @@ body {
                     padding: 0 0 10em;
                     list-style: none;
                     
-                    .dialogs {
-                        margin: .5em 0;
+                    .dialog {
+                        margin: 1em 0;
+                        position: relative;
+                        border-bottom: 1px solid $gray;
+                        border-bottom: 1px solid rgba(0,0,0, .05);
+                        padding-bottom: 1em;
                         .chatter-name {
                             margin-right: 1em;
+                        }
+                        .chatt-dialog {
+                            width: 90%;
+                            display: inline-block;
+                        }
+                        .chatt-time {
+                            position: absolute;
+                            right: 0;
+                            font-size: .8em;
                         }
                     }
                 }
@@ -163,6 +176,10 @@ body {
             background: $gray;
             
             .chatt-input-inner {
+                .not-connected {
+                    font-size: 1.2em;
+                    color: $red;
+                }
                 .add-name {
                     background: transparent;
                     background: #aaa\9;

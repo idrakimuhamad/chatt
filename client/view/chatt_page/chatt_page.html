@@ -14,7 +14,8 @@
                             <span class="chatter-name">
                             {{chatter}} :
                             </span>
-                            {{dialog}}
+                            <span class="chatt-dialog">{{dialog}}</span>
+                            <span class="chatt-time">{{time}}</span>
                         </li>
                         {{/each}}
                         {{/isolate}}
@@ -28,18 +29,26 @@
 	    <div class="container-fluid">
 	        <div class="row-fluid">
                 <div class="span6 offset3">
-                    <div class="chatt-input-inner">
+                    <div class="chatt-input-inner {{connected}}">
+                        {{#isolate}}
                         {{#if no_name_yet}}
                         <input type="text" class="add-name" placeholder="Your Chatt Name">
                         {{else}}
-                        
-                        {{#isolate}}
+                        {{#if not_connected}}
+                        <div class="not-connected">
+                            You're not connected to the internet. The chatto need internet to work.
+                        </div>
+                        {{else}}
                         <div id="chatt-input" class="{{focus}}">
+                            
+                            {{#constant}}
                             <span class="chatt-name">@{{chatter_name}}</span>
                             <input type="text" class="chatt-input" placeholder="Type and enter!">
+                            {{/constant}}
                         </div>
-                        {{/isolate}}
                         {{/if}}
+                        {{/if}}
+                        {{/isolate}}
                     </div>
                 </div>
 	        </div>
