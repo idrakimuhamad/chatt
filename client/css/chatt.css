@@ -28,7 +28,10 @@
   line-height: 1em;
 }
 
-input[type="submit"], input[type="button"], button, select {
+input[type="submit"],
+input[type="button"],
+button,
+select {
   outline: 0;
 }
 
@@ -83,7 +86,8 @@ input[type="submit"], input[type="button"], button, select {
 /****************************/
 /**		Layout
 /***************************/
-html, body {
+html,
+body {
   height: 100%;
   position: relative;
 }
@@ -116,9 +120,10 @@ body {
 }
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatter-name {
   margin-right: 1em;
+  max-width: 10%;
 }
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatt-dialog {
-  width: 90%;
+  max-width: 90%;
   display: inline-block;
 }
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatt-time {
@@ -183,10 +188,42 @@ body {
   -o-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
+#wrapper .app-content .chatt-input-container #chatt-input .toggle-text {
+  position: absolute;
+  right: 0;
+  line-height: 2;
+  cursor: pointer;
+}
+#wrapper .app-content .chatt-input-container #chatt-input .toggle-text.upper {
+  color: #7eeaff;
+  text-shadow: 0 1px 2px rgba(126, 234, 255, 0.35);
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+#wrapper .app-content .chatt-input-container #chatt-input .toggle-text.lower {
+  color: #777777;
+  text-shadow: 0 0 0 transparent;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+#wrapper .app-content .chatt-input-container #chatt-input .toggle-text .first-text {
+  font-size: .8em;
+}
+#wrapper .app-content .chatt-input-container #chatt-input .toggle-text .second-text {
+  font-size: 1.2em;
+}
 #wrapper .app-content .chatt-input-container #chatt-input.focus .chatt-input {
   line-height: 2;
   font-size: 2em;
   height: 2em;
+  padding: 0;
+}
+#wrapper .app-content .chatt-input-container #chatt-input.focus.large .chatt-input {
+  font-size: 1em;
   padding: 0;
 }
 

@@ -39,12 +39,17 @@
                             You're not connected to the internet. The chatto need internet to work.
                         </div>
                         {{else}}
-                        <div id="chatt-input" class="{{focus}}">
+                        <div id="chatt-input" class="{{focus}} {{font_size}}">
                             
                             {{#constant}}
                             <span class="chatt-name">@{{chatter_name}}</span>
                             <input type="text" class="chatt-input" placeholder="Type and enter!">
+                           
                             {{/constant}}
+                            <span class="toggle-text {{font_state}}" title="Change font size">
+                                <span class="first-text">A</span>
+                                <span class="second-text">A</span>
+                            </span>
                         </div>
                         {{/if}}
                         {{/if}}

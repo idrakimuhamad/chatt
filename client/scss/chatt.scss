@@ -1,267 +1,532 @@
 
-@import "compass/css3/border-radius";
-@import "compass/css3/box-shadow";
-@import "compass/css3/transition";
-@import "compass/css3/transform";
+@import"compass/css3/border-radius";
+
+@import"compass/css3/box-shadow";
+
+@import"compass/css3/transition";
+
+@import"compass/css3/transform";
 
 /****************************/
+
 /** 	Variables
 /****************************/
 
-$white 	: #fff;
-$gray 	: #fafafa;
-$darkGray : #777;
-$black 	: #191C21;
-$red 	: #F56F6C;
-$darkBlue : #4A5063;
-$lightGreen : #C2D4A0;
+$white: #fff;
 
+$gray: #fafafa;
+
+$darkGray: #777;
+
+$black: #191C21;
+
+$red: #F56F6C;
+
+$darkBlue: #4A5063;
+
+$lightBlue : #7EEAFF;
+
+$lightGreen: #C2D4A0;
 
 /****************************/
+
 /**		Mixin
 /***************************/
 
 @mixin clearfix() {
-	*zoom:1;
-	&:before, &:after { content: " "; display: table; }
-	&:after { clear: both; }
+
+    *zoom: 1;
+
+    &:before, &:after {
+
+        content: " ";
+
+        display: table;
+
+    }
+
+    &:after {
+
+        clear: both;
+
+    }
+
 }
 
 @mixin userSelect() {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: moz-none;
-	-ms-user-select: none;
-	user-select: none;
+
+    -webkit-touch-callout: none;
+
+    -webkit-user-select: none;
+
+    -khtml-user-select: none;
+
+    -moz-user-select: moz-none;
+
+    -ms-user-select: none;
+
+    user-select: none;
+
 }
 
-
-
 /****************************/
+
 /**		Utilities
 /***************************/
 
-// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+// http: //www.paulirish.com/2012/box-sizing-border-box-ftw
+
 *, *:before, *:after {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+
+    -moz-box-sizing: border-box;
+
+    -webkit-box-sizing: border-box;
+
+    box-sizing: border-box;
+
 }
 
 .icon {
-	font-family: "fontello";
-	background-image: none;
-	font-style: normal;
-	font-weight: normal;
-	speak: none;
-	display: inline-block;
-	text-decoration: inherit;
-	width: 1em;
-	text-align: center;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1em;
+
+    font-family: "fontello";
+
+    background-image: none;
+
+    font-style: normal;
+
+    font-weight: normal;
+
+    speak: none;
+
+    display: inline-block;
+
+    text-decoration: inherit;
+
+    width: 1em;
+
+    text-align: center;
+
+    font-variant: normal;
+
+    text-transform: none;
+
+    line-height: 1em;
+
 }
 
 textarea,
+
 input[type="text"],
+
 input[type="password"],
+
 input[type="datetime"],
+
 input[type="datetime-local"],
+
 input[type="date"],
+
 input[type="month"],
+
 input[type="time"],
+
 input[type="week"],
+
 input[type="number"],
+
 input[type="email"],
+
 input[type="url"],
+
 input[type="search"],
+
 input[type="tel"],
+
 input[type="color"],
+
 .uneditable-input,
+
 select {
-//	padding: .65em 1em;
-//	line-height: normal;
-//	height: auto;
-//	border: 1px solid rgba(0,0,0, .1);
+
+    // padding: .65em 1em;
+
+    // line-height: normal;
+
+    // height: auto;
+
+    // border: 1px solid rgba(0, 0, 0, .1);
+
 }
 
-input[type="submit"], input[type="button"], button, select {
-	outline: 0
+input[type="submit"],
+
+input[type="button"],
+
+button,
+
+select {
+
+    outline: 0
+
 }
 
 .brad-top {
-	@include border-radius(3px 3px 0 0);
+
+    @include border-radius(3px 3px 0 0);
+
 }
 
 .brad-top-left {
-	@include border-radius(3px 0 0 0);
+
+    @include border-radius(3px 0 0 0);
+
 }
 
 .brad-top-right {
-	@include border-radius(0 3px 0 0);
+
+    @include border-radius(0 3px 0 0);
+
 }
 
 .brad-bottom {
-	@include border-radius(0 0 3px 3px);
+
+    @include border-radius(0 0 3px 3px);
+
 }
 
 .brad-bottom-left {
-	@include border-radius(0 0 0 3px);
+
+    @include border-radius(0 0 0 3px);
+
 }
 
 .brad-bottom-right {
-	@include border-radius(0 0 3px 0);
+
+    @include border-radius(0 0 3px 0);
+
 }
 
-
 /****************************/
+
 /**		Layout
 /***************************/
 
-html, body {
-	height: 100%;
-	position: relative;
+html,
+
+body {
+
+    height: 100%;
+
+    position: relative;
+
 }
 
 body {
+
     font-family: open-sans, sans-serif;
+
 }
 
 #wrapper {
+
     .app-content {
-        position:relative;
+
+        position: relative;
+
         .for-ie {
+
             position: absolute;
+
             top: 3em;
-            left : 3em;
-            width : 150px;
+
+            left: 3em;
+
+            width: 150px;
+
             font-size: .8em;
+
         }
+
         .chatt-body-container {
+
             .chatt-body {
+
                 .chatt-dialogs {
+
                     margin: 0;
+
                     padding: 0 0 10em;
+
                     list-style: none;
-                    
+
                     .dialog {
+
                         margin: 1em 0;
+
                         position: relative;
+
                         border-bottom: 1px solid $gray;
-                        border-bottom: 1px solid rgba(0,0,0, .05);
+
+                        border-bottom: 1px solid rgba(0, 0, 0, .05);
+
                         padding-bottom: 1em;
+
                         .chatter-name {
+
                             margin-right: 1em;
+                            
+                            max-width: 10%;
+
                         }
+
                         .chatt-dialog {
-                            width: 90%;
+
+                            max-width: 90%;
+
                             display: inline-block;
+
                         }
+
                         .chatt-time {
+
                             position: absolute;
+
                             right: 0;
+
                             font-size: .8em;
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        .chatt-input-container {
+
+            position: fixed;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            width: 100%;
+
+            padding: 1em 0;
+
+            background: $gray;
+
+            .chatt-input-inner {
+
+                .not-connected {
+
+                    font-size: 1.2em;
+
+                    color: $red;
+
+                }
+
+                .add-name {
+
+                    background: transparent;
+
+                    background: #aaa\9;
+
+                    padding: 0;
+
+                    margin: 0;
+
+                    border: 0;
+
+                    width: 100%;
+
+                    font-size: 2em;
+
+                    line-height: 2;
+
+                    height: 2em;
+
+                    @include box-shadow(none);
+
+                    @include transition(all .25s linear);
+
+                }
+
+            }
+
+            #chatt-input {
+
+                position: relative;
+
+                .chatt-name {
+
+                    position: relative;
+
+                    top: 0;
+
+                    left: 0;
+
+                    line-height: 2;
+
+                    margin-right: 2em;
+
+                }
+
+                .chatt-input {
+
+                    background: transparent;
+
+                    background: #aaa\9;
+
+                    padding: 0;
+
+                    margin: 0;
+
+                    border: 0;
+
+                    width: 80%;
+
+                    height: 2em;
+
+                    @include box-shadow(none);
+
+                    @include transition(all .25s linear);
+
+                }
+
+                .toggle-text {
+
+                    position: absolute;
+
+                    right: 0;
+
+                    line-height: 2;
+
+                    cursor: pointer;
+    
+                    &.upper {
+
+                        color: $lightBlue;
+                        text-shadow: 0 1px 2px rgba(126, 234, 255, 0.35);
+                        @include transition(all .25s ease-in-out);
+
+                    }
+
+                    &.lower {
+
+                        color: $darkGray;
+                        text-shadow: 0 0 0 transparent;
+                        @include transition(all .25s ease-in-out);
+
+                    }
+
+                    .first-text {
+
+                        font-size: .8em;
+
+                    }
+
+                    .second-text {
+
+                        font-size: 1.2em;
+
+                    }
+
+                }
+
+                &.focus {
+
+                    .chatt-name {
+
+                        // top: 1em;
+
+                    }
+
+                    .chatt-input {
+
+                        line-height: 2;
+
+                        font-size: 2em;
+
+                        height: 2em;
+
+                        padding: 0;
+
+                    }
+
+                     &.large {
+                         .chatt-input {
+    
+                            font-size: 1em;
+    
+                            padding: 0;
+    
                         }
                     }
+
                 }
+
             }
+
         }
-        .chatt-input-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            padding: 1em 0;
-            background: $gray;
-            
-            .chatt-input-inner {
-                .not-connected {
-                    font-size: 1.2em;
-                    color: $red;
-                }
-                .add-name {
-                    background: transparent;
-                    background: #aaa\9;
-                    padding: 0;
-                    margin: 0;
-                    border: 0;
-                    width: 100%;
-                    font-size: 2em;
-                    line-height: 2;
-                    height: 2em;
-                    @include box-shadow(none);
-                    @include transition(all .25s linear);
-                }
-            }
-            
-            #chatt-input {
-                position: relative;
-                .chatt-name {
-                    position: relative;
-                    top: 0;
-                    left: 0;
-                    line-height: 2;
-                    margin-right: 2em;
-                }
-                .chatt-input {
-                    background: transparent;
-                    background: #aaa\9;
-                    padding: 0;
-                    margin: 0;
-                    border: 0;
-                    width: 80%;
-                    height: 2em;
-                    @include box-shadow(none);
-                    @include transition(all .25s linear);
-                }
-                
-                &.focus {
-                    .chatt-name {
-//                        top: 1em;
-                    }
-                    .chatt-input {
-                        line-height: 2;
-                        font-size: 2em;
-                        height: 2em;
-                        padding: 0;
-                    }
-                }
-            }
-        }
+
     }
+
 }
 
 .transition {
-	-webkit-backface-visibility: hidden;
-	@include transition(all 0.3s !important);
-	&.from-top {
-		opacity: 0;
-		@include transform(translateY(-60%));
-	}
-	&.from-left {
-		opacity: 0;
-		@include transform(translateX(-101%));
-	}
-	&.center {
-		opacity: 1;
-		@include transform(translate3d(0,0,0));
-	}
-	&.superscale {
-		@include transform(scale(2));
-	}
-	&.scale {
-		@include transform(scale(1));
-	}
-	&.removing {
-		background: $red !important;
-		color: $gray;
-	}
+
+    -webkit-backface-visibility: hidden;
+
+    @include transition(all 0.3s !important);
+
+    &.from-top {
+
+        opacity: 0;
+
+        @include transform(translateY(-60%));
+
+    }
+
+    &.from-left {
+
+        opacity: 0;
+
+        @include transform(translateX(-101%));
+
+    }
+
+    &.center {
+
+        opacity: 1;
+
+        @include transform(translate3d(0, 0, 0));
+
+    }
+
+    &.superscale {
+
+        @include transform(scale(2));
+
+    }
+
+    &.scale {
+
+        @include transform(scale(1));
+
+    }
+
+    &.removing {
+
+        background: $red !important;
+
+        color: $gray;
+
+    }
+
 }
-
-
-
-
-
-
-

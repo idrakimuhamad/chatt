@@ -1,6 +1,6 @@
 Session.setDefault('chatt_name', null);
 Session.set('current_chatter', null);
-//Session.setDefault('new_notification', false);
+Session.setDefault('font_size', 'lower');
 
 Template.chatt_page.rendered = function() {
     $(window).scrollTop($(document).height());
@@ -43,6 +43,12 @@ Template.chatt_page.helpers({
     },
     not_connected : function() {
         return Meteor.status().status !== "connected";
+    },
+    font_state : function() {
+        return Session.get('font_size');
+    },
+    font_size : function() {
+        return Session.equals('font_size', 'upper') ? 'large' : 'small';
     }
 });
 
@@ -65,6 +71,15 @@ Template.chatt_page.events({
             e.preventDefault();
             createDialog(t);
         }
+    },
+    'click .toggle-text' : function(e,t) {
+        e.preventDefault();
+        if(Session.get('font_size') === 'upper') {
+            Session.set('font_size', 'lower');
+        } else {
+            Session.set('font_size', 'upper');
+        }
+        
     }
 });
 
