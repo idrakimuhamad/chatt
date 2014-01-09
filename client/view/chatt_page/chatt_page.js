@@ -4,7 +4,7 @@ Session.setDefault('font_size', 'lower');
 
 Template.chatt_page.rendered = function() {
     $(window).scrollTop($(document).height());
-    
+
     /*@cc_on
 	$('.for-ie').text('Yo IE user. Type in your name at the grey box and press enter. After that, to chat, type in your stuff in the grey box and press enter. Aaaand Chrome is the winner.');
 	@*/
@@ -18,23 +18,22 @@ Template.chatt_page.helpers({
         return Session.get('chatt_name');
     },
     chatt : function() {
-        var dialogs = Chatt.find({}).fetch();
-            dialogs = dialogs[0].dialogs;
-        if(dialogs)
-            return dialogs;
+        var dialogs = Chatt.find().fetch();
+            dialogs = dialogs[0].dialogs,
+            topOnly = '';
+
+        if(dialogs) {
+            if (dialogs.length > 30) {
+                topOnly = dialogs.slice( dialogs.length - 30, dialogs.length );
+                return topOnly;
+            } else {
+                return dialogs;
+            }
+        }
     },
     time : function() {
         return moment(this.timestamp).format('hh:mma');
     },
-//    not_the_current_chatter : function() {
-//        
-//        if( this.chatter === Session.get('current_chatter') ) {
-//            return false;
-//        } else {
-//            Session.set('current_chatter', this.chatter);
-//            return true;
-//        }
-//    },
     focus : function() {
         return Session.get('on_focus') ? 'focus' : '';
     },
@@ -61,7 +60,7 @@ Template.chatt_page.events({
         if(e.which === 13) {
             e.preventDefault();
             var name = t.find('.add-name').value;
-            
+
             if(name)
                 Session.set('chatt_name', name);
         }
@@ -79,14 +78,14 @@ Template.chatt_page.events({
         } else {
             Session.set('font_size', 'upper');
         }
-        
+
     }
 });
 
 function createDialog(template) {
     var dialog = template.find('.chatt-input').value;
     $('.chatt-input').val('').select();
-            
+
     if(dialog) {
         Chatt.update(Session.get('current_chatt'), {
             $push : {
@@ -113,7 +112,7 @@ function createDialog(template) {
 //
 //
 //Meteor.autorun(function() {
-//    if(Session.get('new_notification')) {        
+//    if(Session.get('new_notification')) {
 //        interval = setInterval(changeTitle, 700);
 //    }
 //});
