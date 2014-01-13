@@ -1,9 +1,16 @@
-Session.setDefault('chatt_name', null);
+Session.setDefault('chatter', null);
 Session.set('current_chatter', null);
 Session.setDefault('font_size', 'lower');
 
 Template.chatt_page.rendered = function() {
     $(window).scrollTop($(document).height());
+
+    if(!this.rendered) {
+        this.rendered = true;
+    } else {
+
+
+    }
 
     /*@cc_on
 	$('.for-ie').text('Yo IE user. Type in your name at the grey box and press enter. After that, to chat, type in your stuff in the grey box and press enter. Aaaand Chrome is the winner.');
@@ -12,24 +19,14 @@ Template.chatt_page.rendered = function() {
 
 Template.chatt_page.helpers({
 	no_name_yet : function() {
-        return Session.equals('chatt_name', null);
+        return Session.equals('chatter', null);
     },
     chatter_name : function() {
-        return Session.get('chatt_name');
+        return Session.get('chatter');
     },
-    chatt : function() {
-        var dialogs = Chatt.find().fetch();
-            dialogs = dialogs[0].dialogs,
-            topOnly = '';
-
-        if(dialogs) {
-            if (dialogs.length > 30) {
-                topOnly = dialogs.slice( dialogs.length - 30, dialogs.length );
-                return topOnly;
-            } else {
-                return dialogs;
-            }
-        }
+    chat : function() {
+        var dialogs = Dialogs.find({}, { sort : { timestamp : -1}, limit : 30 }).fetch();
+        return dialogs.sort(compare);
     },
     time : function() {
         return moment(this.timestamp).format('hh:mma');
@@ -48,7 +45,20 @@ Template.chatt_page.helpers({
     },
     font_size : function() {
         return Session.equals('font_size', 'upper') ? 'large' : 'small';
+    },
+    new_notification : function() {
+        var notify = Notify.find({ chattId : Session.get('current_chatt'), read : false }, { sort : { timestamps : -1 }}).fetch(),
+            lastChatter = Chatt.find({}).fetch()[0].lastChatter;
+
+        if(lastChatter !== Session.get('chatterId') && Session.get('chatterId') && notify.length) {
+            createNotification(Session.get('current_chatt'));
+            return notify;
+        }
+    },
+    count : function() {
+        return Notify.find({ chattId : Session.get('current_chatt'), read : false }, { limit : 1, sort : { timestamps : -1 }}).count();
     }
+
 });
 
 Template.chatt_page.events({
@@ -61,8 +71,11 @@ Template.chatt_page.events({
             e.preventDefault();
             var name = t.find('.add-name').value;
 
-            if(name)
-                Session.set('chatt_name', name);
+            if(name) {
+                var chatterId = new Meteor.Collection.ObjectID();
+                Session.set('chatter', name);
+                Session.set('chatterId', chatterId._str);
+            }
         }
     },
     'keyup .chatt-input' : function(e,t) {
@@ -79,51 +92,41 @@ Template.chatt_page.events({
             Session.set('font_size', 'upper');
         }
 
+    },
+    'click .notification-switch' : function(e,t) {
+        getNotificationPermission();
     }
 });
 
+window.onunload = function(e) {
+    var newNotification = Notify.find({ chattId : Session.get('current_chatt') }, { limit : 1, sort : { timestamps : -1 }}).fetch(),
+        notifyId = newNotification[0]._id;
+
+    Meteor.call('notify', notifyId, function (error, result) {
+        if(!error) {
+
+        }
+    });
+}
+
 function createDialog(template) {
     var dialog = template.find('.chatt-input').value;
+    Session.set('dialog_content', dialog);
     $('.chatt-input').val('').select();
 
     if(dialog) {
-        Chatt.update(Session.get('current_chatt'), {
-            $push : {
-                dialogs : {
-                    dialog : dialog,
-                    chatter : Session.get('chatt_name'),
-                    timestamp : moment().valueOf()
-                }
-            }
-        }, function(err) {
-            if(!err) {
-//                Session.set('new_notification', true);
+        dialogOptions = {
+            dialog : dialog,
+            chattId : Session.get('current_chatt'),
+            chatter : Session.get('chatter'),
+            chatterId : Session.get('chatterId')
+        }
+
+        Meteor.call('dialog', dialogOptions, function (error, result) {
+            if(!error) {
+                // Session.set('new_notification', true);
             }
         });
     }
 }
 
-// little hack for blinking title
-//var isOldTitle = true;
-//var oldTitle = "Chatt - A Stupid Chat App";
-//var newTitle = 'New chatt! | Chatt - A Stupid Chat App';
-//var interval = null;
-//
-//
-//
-//Meteor.autorun(function() {
-//    if(Session.get('new_notification')) {
-//        interval = setInterval(changeTitle, 700);
-//    }
-//});
-//
-//function changeTitle() {
-//    document.title = isOldTitle ? oldTitle : newTitle;
-//    isOldTitle = !isOldTitle;
-//}
-//
-//$(window).focus(function () {
-//    clearInterval(interval);
-//    Session.set('new_notification', false);
-//    $('title').text(oldTitle);
-//});

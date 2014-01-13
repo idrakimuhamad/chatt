@@ -1,23 +1,32 @@
 Notify = new Meteor.Collection('notify'),
-    
+
 Notify.allow({
+	// Notification will only be created through the server
+	insert : function(userId, doc) {
+		return false;
+	}
 
-	insert: function (userId, doc) {
-		// the user must be logged in, and they're the admin
-//		return (userId && isAdminById(userId));
-        return false;
-	},
+});
 
-	update: function (userId, doc, fields, modifier) {
-		// admin can only change
-//		return isAdminById(userId);
-        return false;
-	},
+createChattNotification = function(dialog) {
+	var chatt = Chatt.findOne(dialog.chattId);
 
-	remove: function (userId, doc) {
-		// only admin can remove
-//		return isAdminById(userId);
-        return false;
-	},
+	Notify.insert({
+		chattId: chatt._id,
+		dialogId: dialog._id,
+		chatter: dialog.chatter,
+		chatterId: dialog.chatterId,
+		timestamps : moment().valueOf(),
+		read: false
+	});
+};
 
+Meteor.methods({
+	notify: function (id) {
+		Notify.update({ chattId : id, read : false}, {
+            $set : {
+                read : true
+            }},
+            { multi: true });
+	}
 });

@@ -14,7 +14,9 @@ Router.map(function() {
 		},
 
 		waitOn: function () {
-			return Meteor.subscribe('selected_chatt', this.params._id);
+			return [ Meteor.subscribe('selected_chatt', this.params._id),
+				Meteor.subscribe('chatt_dialogs', this.params._id),
+				Meteor.subscribe('notification', this.params._id) ];
 		},
 
 		before : function() {

@@ -1,24 +1,33 @@
 
-Chatt = new Meteor.Collection('chat'),
-    
+Chatt = new Meteor.Collection('chatt'),
+
 Chatt.allow({
 
 	insert: function (userId, doc) {
-		// the user must be logged in, and they're the admin
-//		return (userId && isAdminById(userId));
-        return true;
+		return true;
 	},
 
 	update: function (userId, doc, fields, modifier) {
-		// admin can only change
-//		return isAdminById(userId);
-        return true;
+		return true;
 	},
 
 	remove: function (userId, doc) {
-		// only admin can remove
-//		return isAdminById(userId);
-        return true;
+		return isAdminById(userId);
 	},
 
+});
+
+Meteor.methods({
+	chat: function (chat) {
+		if (!chat) {
+      		throw new Meteor.Error(422, 'A name for this session would be awesome. Thanks.');
+		}
+
+		chatt = {
+			chat : chat,
+			timestamp : moment().valueOf()
+		};
+
+		return Chatt.insert(chatt);
+	}
 });

@@ -24,6 +24,8 @@ $red: #F56F6C;
 
 $darkBlue: #4A5063;
 
+$yellow : #FFDC00;
+
 $lightBlue : #7EEAFF;
 
 $lightGreen: #C2D4A0;
@@ -274,7 +276,7 @@ body {
                         .chatter-name {
 
                             margin-right: 1em;
-                            
+
                             max-width: 10%;
 
                         }
@@ -295,6 +297,14 @@ body {
 
                             font-size: .8em;
 
+                        }
+
+                        .new-notification {
+                            .new-message {
+                                background: $yellow;
+                                padding: .5em 1em;
+                                color: rgba(0,0,0, .35);
+                            }
                         }
 
                     }
@@ -408,7 +418,7 @@ body {
                     line-height: 2;
 
                     cursor: pointer;
-    
+
                     &.upper {
 
                         color: $lightBlue;
@@ -439,6 +449,10 @@ body {
 
                 }
 
+                .notification-switch {
+                    cursor: pointer;
+                }
+
                 &.focus {
 
                     .chatt-name {
@@ -461,11 +475,11 @@ body {
 
                      &.large {
                          .chatt-input {
-    
+
                             font-size: 1em;
-    
+
                             padding: 0;
-    
+
                         }
                     }
 

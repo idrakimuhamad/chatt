@@ -131,6 +131,11 @@ body {
   right: 0;
   font-size: .8em;
 }
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .new-notification .new-message {
+  background: #ffdc00;
+  padding: .5em 1em;
+  color: rgba(0, 0, 0, 0.35);
+}
 #wrapper .app-content .chatt-input-container {
   position: fixed;
   bottom: 0;
@@ -215,6 +220,9 @@ body {
 }
 #wrapper .app-content .chatt-input-container #chatt-input .toggle-text .second-text {
   font-size: 1.2em;
+}
+#wrapper .app-content .chatt-input-container #chatt-input .notification-switch {
+  cursor: pointer;
 }
 #wrapper .app-content .chatt-input-container #chatt-input.focus .chatt-input {
   line-height: 2;

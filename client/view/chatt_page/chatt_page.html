@@ -9,8 +9,8 @@
 	            <div class="chatt-body">
 	                <ul class="chatt-dialogs">
                         {{#isolate}}
-                        {{#each chatt}}
-                        <li class="dialog">
+                        {{#each chat}}
+                        <li class="dialog" data-chatter-id="{{chatterId}}" data-chatter="{{chatter}}">
                             <span class="chatter-name">
                             {{chatter}} :
                             </span>
@@ -19,12 +19,17 @@
                         </li>
                         {{/each}}
                         {{/isolate}}
+                        {{#if new_notification}}
+                        <li class="new-notification">
+                            <span class="new-message">{{count}} new chatt(s)</span>
+                        </li>
+                        {{/if}}
 	                </ul>
 	            </div>
 	        </div>
 	    </div>
 	</div>
-	
+
 	<div class="chatt-input-container">
 	    <div class="container-fluid">
 	        <div class="row-fluid">
@@ -40,16 +45,17 @@
                         </div>
                         {{else}}
                         <div id="chatt-input" class="{{focus}} {{font_size}}">
-                            
+
                             {{#constant}}
                             <span class="chatt-name">@{{chatter_name}}</span>
                             <input type="text" class="chatt-input" placeholder="Type and enter!">
-                           
+
                             {{/constant}}
                             <span class="toggle-text {{font_state}}" title="Change font size">
                                 <span class="first-text">A</span>
                                 <span class="second-text">A</span>
                             </span>
+                            <span class="notification-switch {{notification_switch}}">Enable Notification</span>
                         </div>
                         {{/if}}
                         {{/if}}

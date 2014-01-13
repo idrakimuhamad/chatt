@@ -13,14 +13,16 @@ Template.create_session.events({
 });
 
 function createChatt(template) {
-    
+
     var chatt_name = template.find('.chat-name').value;
-    
+
     if(chatt_name) {
-        Chatt.insert({ chatt_name : chatt_name }, function(err, res) {
-            if(!err) {
-                Router.go('chatt_page', { _id : res });
+
+        Meteor.call('chat', chatt_name, function (error, result) {
+            if(!error) {
+                Router.go('chatt_page', { _id : result });
             }
         });
+
     }
 }
