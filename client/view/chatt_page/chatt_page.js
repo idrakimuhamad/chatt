@@ -5,13 +5,6 @@ Session.setDefault('font_size', 'lower');
 Template.chatt_page.rendered = function() {
     $(window).scrollTop($(document).height());
 
-    if(!this.rendered) {
-        this.rendered = true;
-    } else {
-
-
-    }
-
     /*@cc_on
 	$('.for-ie').text('Yo IE user. Type in your name at the grey box and press enter. After that, to chat, type in your stuff in the grey box and press enter. Aaaand Chrome is the winner.');
 	@*/
@@ -47,10 +40,11 @@ Template.chatt_page.helpers({
         return Session.equals('font_size', 'upper') ? 'large' : 'small';
     },
     new_notification : function() {
-        var notify = Notify.find({ chattId : Session.get('current_chatt'), read : false }, { sort : { timestamps : -1 }}).fetch(),
+        var notify = Notify.find({ chattId : Session.get('current_chatt'), read : false }, { sort : { timestamps : -1 }}),
+            notifyCount = notify.count(),
             lastChatter = Chatt.find({}).fetch()[0].lastChatter;
 
-        if(lastChatter !== Session.get('chatterId') && Session.get('chatterId') && notify.length) {
+        if(lastChatter !== Session.get('chatterId') && Session.get('chatterId') && notifyCount > 0) {
             createNotification(Session.get('current_chatt'));
             return notify;
         }

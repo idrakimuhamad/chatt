@@ -2,7 +2,8 @@
 	Global Helpers Function
 */
 var oldTitle = "Chatt - A Stupid Chat App",
-	newTitle = "New chatt! | Chatt - A Stupid Chat App";
+	newTitle = "New chatt! | Chatt - A Stupid Chat App",
+	isOldTitle = true;
 
 /** To sort Array Object by its timestamps **/
 compare = function(a,b) {
@@ -30,7 +31,10 @@ createNotification = function(chattId) {
 
 			notify.show();
 
-			interval = Meteor.setInterval(changeTitle, 700);
+			if (isOldTitle) {
+				interval = Meteor.setInterval(changeTitle, 700);
+				isOldTitle = !isOldTitle;
+			}
 
 			notify.ondisplay = Meteor.setTimeout(function () {
 				notify.cancel();
@@ -42,37 +46,43 @@ createNotification = function(chattId) {
 			};
 
 			$(window).focus(function () {
-			    Meteor.call('notify', chattId, function (error, result) {
-		            if(!error) {
-		            	clearInterval(interval);
-			    		$("title").text(oldTitle);
-			    		notify.cancel();
-		            }
-		        });
+			    Meteor.setTimeout(updateNotify(notify, chattId, interval), 5000);
+    			isOldTitle = true;
 			});
 
 		} else {
 			window.webkitNotifications.requestPermission();
 		}
 	} else {
-		interval = Meteor.setInterval(changeTitle, 700);
+		
+		if (isOldTitle) {
+			interval = Meteor.setInterval(changeTitle, 700);
+			isOldTitle = !isOldTitle;
+		}
 
 		$(window).focus(function () {
-		    Meteor.call('notify', chattId, function (error, result) {
-	            if(!error) {
-	            	clearInterval(interval);
-		    		$("title").text(oldTitle);
-	            }
-	        });
+			Meteor.setTimeout(updateNotify(null, chattId, interval), 5000);
+			isOldTitle = true;
 		});
 	}
 };
 
 changeTitle = function() {
-
 	if(document.title == oldTitle) {
 		document.title = newTitle;
 	} else {
 		document.title = oldTitle;
 	}
+}
+
+updateNotify = function(notify, chattId, interval) {
+	Meteor.call('notify', chattId, function (error, result) {
+        if(!error) {
+        	clearInterval(interval);
+    		$("title").text(oldTitle);
+    		if(notify)
+    			notify.cancel();
+    		console.log("i'm running");
+        }
+    });
 }
