@@ -263,15 +263,19 @@ body {
 
                     .dialog {
 
-                        margin: 1em 0;
-
                         position: relative;
 
                         border-bottom: 1px solid $gray;
 
                         border-bottom: 1px solid rgba(0, 0, 0, .05);
 
-                        padding-bottom: 1em;
+                        padding: 1em;
+
+                        @include transition(background .5s linear);
+
+                        &.unseen {
+                            background: $yellow;
+                        }
 
                         .chatter-name {
 
@@ -299,14 +303,14 @@ body {
 
                         }
 
-                        .new-notification {
-                            .new-message {
-                                background: $yellow;
-                                padding: .5em 1em;
-                                color: rgba(0,0,0, .35);
-                            }
-                        }
+                    }
 
+                    .new-notification {
+                        .new-message {
+                            background: $yellow;
+                            padding: .5em 1em;
+                            color: rgba(0,0,0, .35);
+                        }
                     }
 
                 }

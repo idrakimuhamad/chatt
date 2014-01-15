@@ -112,11 +112,17 @@ body {
   list-style: none;
 }
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog {
-  margin: 1em 0;
   position: relative;
   border-bottom: 1px solid #fafafa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  padding-bottom: 1em;
+  padding: 1em;
+  -webkit-transition: background 0.5s linear;
+  -moz-transition: background 0.5s linear;
+  -o-transition: background 0.5s linear;
+  transition: background 0.5s linear;
+}
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog.unseen {
+  background: #ffdc00;
 }
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatter-name {
   margin-right: 1em;
@@ -131,7 +137,7 @@ body {
   right: 0;
   font-size: .8em;
 }
-#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .new-notification .new-message {
+#wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .new-notification .new-message {
   background: #ffdc00;
   padding: .5em 1em;
   color: rgba(0, 0, 0, 0.35);
