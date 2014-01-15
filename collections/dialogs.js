@@ -19,18 +19,18 @@ Meteor.methods({
       		throw new Meteor.Error(422, 'Nope. Create a chatt session before start chatting.');
 		}
 
-		dialog = _.extend(_.pick(dialogOptions,
+		var dialog = _.extend(_.pick(dialogOptions,
 			'dialog', 'chattId', 'chatter', 'chatterId'), {
 			timestamp : moment().valueOf()
 		});
 
 		dialog._id = Dialogs.insert(dialog);
 
-		Chatt.update({_id : dialogOptions.chattId}, {
-			$set : {
-				lastChatter : dialogOptions.chatterId
-			}
-		});
+		// Chatt.update({_id : dialogOptions.chattId}, {
+		// 	$set : {
+		// 		lastChatter : dialogOptions.chatterId
+		// 	}
+		// });
 
 		createChattNotification(dialog);
 
