@@ -10,7 +10,7 @@
 	                <ul class="chatt-dialogs">
                         {{#isolate}}
                         {{#each chat}}
-                        <li class="dialog" data-chatter-id="{{chatterId}}" data-chatter="{{chatter}}">
+                        <li class="dialog {{{seen_status}}}" data-chatter-id="{{chatterId}}" data-chatter="{{chatter}}">
                             <span class="chatter-name">
                             {{chatter}} :
                             </span>
@@ -18,12 +18,12 @@
                             <span class="chatt-time">{{time}}</span>
                         </li>
                         {{/each}}
-                        {{/isolate}}
                         {{#if new_notification}}
                         <li class="new-notification">
                             <span class="new-message">{{count}} new chatt(s)</span>
                         </li>
                         {{/if}}
+                        {{/isolate}}
 	                </ul>
 	            </div>
 	        </div>

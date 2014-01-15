@@ -21,6 +21,20 @@ Template.chatt_page.helpers({
         var dialogs = Dialogs.find({}, { sort : { timestamp : -1}, limit : 30 }).fetch();
         return dialogs.sort(compare);
     },
+    seen_status : function() {
+        return Notify.find({
+            chattId : Session.get('current_chatt'),
+            dialogId : this._id,
+            chatterId : { $ne : Session.get('chatterId') },
+            read : false },
+            { sort : { timestamps : -1 }}).count() > 0 ? 'unseen' : '';
+
+        // $.each(notify, function() {
+        //     if(this.dialogId === dialogId) {
+        //         return 'unseen';
+        //     }
+        // });
+    },
     time : function() {
         return moment(this.timestamp).format('hh:mma');
     },
@@ -40,11 +54,14 @@ Template.chatt_page.helpers({
         return Session.equals('font_size', 'upper') ? 'large' : 'small';
     },
     new_notification : function() {
-        var notify = Notify.find({ chattId : Session.get('current_chatt'), read : false }, { sort : { timestamps : -1 }}),
-            notifyCount = notify.count(),
-            lastChatter = Chatt.find({}).fetch()[0].lastChatter;
+        var notify = Notify.find({
+                chattId : Session.get('current_chatt'),
+                chatterId : { $ne : Session.get('chatterId') },
+                read : false },
+                { sort : { timestamps : -1 }}),
+            notifyCount = notify.count();
 
-        if(lastChatter !== Session.get('chatterId') && Session.get('chatterId') && notifyCount > 0) {
+        if(Session.get('chatterId') && notifyCount > 0) {
             createNotification(Session.get('current_chatt'));
             return notify;
         }

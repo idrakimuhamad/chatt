@@ -46,7 +46,15 @@ createNotification = function(chattId) {
 			};
 
 			$(window).focus(function () {
-			    Meteor.setTimeout(updateNotify(notify, chattId, interval), 5000);
+    			$("title").text(oldTitle);
+        		clearInterval(interval);
+    			notify.cancel();
+    			$('.dialog').removeClass('unseen').delay(200).queue(function() {
+					$(this).dequeue();
+				    Meteor.setTimeout(function() {
+				    	updateNotify(chattId);
+			   		}, 3000);
+				});
     			isOldTitle = true;
 			});
 
@@ -54,14 +62,21 @@ createNotification = function(chattId) {
 			window.webkitNotifications.requestPermission();
 		}
 	} else {
-		
+
 		if (isOldTitle) {
 			interval = Meteor.setInterval(changeTitle, 700);
 			isOldTitle = !isOldTitle;
 		}
 
 		$(window).focus(function () {
-			Meteor.setTimeout(updateNotify(null, chattId, interval), 5000);
+			$("title").text(oldTitle);
+    		clearInterval(interval);
+    		$('.dialog').removeClass('unseen').delay(200).queue(function() {
+				$(this).dequeue();
+			    Meteor.setTimeout(function() {
+			    	updateNotify(chattId);
+			    }, 3000);
+			});
 			isOldTitle = true;
 		});
 	}
@@ -75,14 +90,9 @@ changeTitle = function() {
 	}
 }
 
-updateNotify = function(notify, chattId, interval) {
+updateNotify = function(chattId) {
 	Meteor.call('notify', chattId, function (error, result) {
         if(!error) {
-        	clearInterval(interval);
-    		$("title").text(oldTitle);
-    		if(notify)
-    			notify.cancel();
-    		console.log("i'm running");
         }
     });
 }
