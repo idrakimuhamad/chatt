@@ -2,20 +2,22 @@
 	<div class="for-ie"></div>
 	<div class="container-fluid">
 	    <div class="row-fluid">
-	        <div class="chatt-body-container span6 offset3">
-	            <header>
+	        <div class="chatt-body-container span12">
+	            <header class="pull-left span3">
 	                <h2>{{chatt_name}}</h2>
 	            </header>
-	            <div class="chatt-body">
+	            <div class="chatt-body span9">
 	                <ul class="chatt-dialogs">
                         {{#isolate}}
                         {{#each chat}}
-                        <li class="dialog {{{seen_status}}}" data-chatter-id="{{chatterId}}" data-chatter="{{chatter}}">
-                            <span class="chatter-name">
-                            {{chatter}} :
-                            </span>
-                            <span class="chatt-dialog">{{dialog}}</span>
-                            <span class="chatt-time">{{time}}</span>
+                        <li class="dialog {{{seen_status}}} {{owner}} clearfix" data-chatter-id="{{chatterId}}" data-chatter="{{chatter}}">
+                            <div class="dialog-cloud {{float_side}}">
+                                <span class="chatter-name">
+                                {{chatter}} :
+                                </span>
+                                <span class="chatt-dialog">{{dialog}}</span>
+                                <span class="chatt-time">{{time}}</span>
+                            </div>
                         </li>
                         {{/each}}
                         {{#if new_notification}}

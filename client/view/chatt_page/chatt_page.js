@@ -11,6 +11,10 @@ Template.chatt_page.rendered = function() {
 }
 
 Template.chatt_page.helpers({
+    chatt_name : function() {
+        return Chatt.find({ _id : Session.get('current_chatt') },
+                { fields : { chat : 1 } }).fetch()[0].chat;
+    },
 	no_name_yet : function() {
         return Session.equals('chatter', null);
     },
@@ -21,6 +25,21 @@ Template.chatt_page.helpers({
         var dialogs = Dialogs.find({}, { sort : { timestamp : -1}, limit : 30 }).fetch();
         return dialogs.sort(compare);
     },
+    owner : function() {
+        if(this.chatterId != Session.get('chatterId')) {
+            return 'guest';
+        } else {
+            return 'mine';
+        }
+    },
+    float_side : function() {
+        if(this.chatterId != Session.get('chatterId')) {
+            return 'pull-left';
+        } else {
+            return 'pull-right';
+        }
+    },
+    // find dialogs which is not yet read/seen and give them some love
     seen_status : function() {
         return Notify.find({
             chattId : Session.get('current_chatt'),
@@ -28,12 +47,6 @@ Template.chatt_page.helpers({
             chatterId : { $ne : Session.get('chatterId') },
             read : false },
             { sort : { timestamps : -1 }}).count() > 0 ? 'unseen' : '';
-
-        // $.each(notify, function() {
-        //     if(this.dialogId === dialogId) {
-        //         return 'unseen';
-        //     }
-        // });
     },
     time : function() {
         return moment(this.timestamp).format('hh:mma');
@@ -77,6 +90,9 @@ Template.chatt_page.events({
         Session.set('on_focus', true);
         $(e.currentTarget).select();
     },
+    // no account implementation, people stay anonymous.
+    // each chatter will be given a unique ID
+    // will not carry over when the page refresh and need to reenter their name
 	'keyup .add-name' : function(e,t) {
         if(e.which === 13) {
             e.preventDefault();

@@ -252,6 +252,7 @@ body {
         .chatt-body-container {
 
             .chatt-body {
+                padding-top: 1em;
 
                 .chatt-dialogs {
 
@@ -265,42 +266,52 @@ body {
 
                         position: relative;
 
-                        border-bottom: 1px solid $gray;
-
-                        border-bottom: 1px solid rgba(0, 0, 0, .05);
-
-                        padding: 1em;
-
                         @include transition(background .5s linear);
 
                         &.unseen {
                             background: $yellow;
                         }
 
+                        &.guest {
+                            .dialog-cloud {
+                                width: 50%;
+                                border-right: 2px solid rgba(0,0,0, .15);
+                            }
+                        }
+
+                        &.mine {
+                            .dialog-cloud {
+                                width: 50.25%;
+                                border-left: 2px solid rgba(0,0,0, .15);
+                            }
+
+                        }
+
+                        .dialog-cloud {
+                            padding: 1em 0;
+                            position: relative;
+                        }
+
                         .chatter-name {
 
-                            margin-right: 1em;
-
-                            max-width: 10%;
+                           position: absolute;
+                           bottom: 1em;
+                           font-size: .8em;
 
                         }
 
                         .chatt-dialog {
-
-                            max-width: 90%;
-
-                            display: inline-block;
-
+                            width: 100%;
+                            display: block;
+                            padding: 1em;
+                            background: $lightBlue;
                         }
 
                         .chatt-time {
 
-                            position: absolute;
-
-                            right: 0;
-
-                            font-size: .8em;
-
+                           position: absolute;
+                           bottom: 1em;
+                           font-size: .8em;
                         }
 
                     }
