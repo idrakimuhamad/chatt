@@ -9,3 +9,12 @@ Template.home.helpers({
 		return !Session.get('isSignup');
 	}
 });
+
+Template.signup.events({
+	'focus .form-control' : function(e,t) {
+		$(e.currentTarget).parent('.form-group').addClass('focus');
+	},
+	'blur .form-control' : function(e,t) {
+		$(e.currentTarget).parent('.form-group').removeClass('focus');
+	}
+})

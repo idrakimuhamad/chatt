@@ -1,9 +1,11 @@
 
+@import "./fontello.css";
+
 // Compass
-@import"compass/css3/border-radius";
-@import"compass/css3/box-shadow";
-@import"compass/css3/transition";
-@import"compass/css3/transform";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/transition";
+@import "compass/css3/transform";
 
 /**
 	Font face
@@ -22,7 +24,7 @@ $black: #191C21;
 $red: #F56F6C;
 $darkBlue: #4A5063;
 $yellow : #FFDC00;
-$lightBlue : #7EEAFF;
+$lightBlue : #2DB9CE;
 $lightGreen: #C2D4A0;
 $facebook : #3C599B;
 
@@ -140,10 +142,16 @@ body {
 			position: relative;
 			.logo {
 				position: absolute;
-				top: 2em;
+				top: 1em;
 				width: 100%;
+				margin: 0;
 				a {
 					font-family: 'Montserrat', Verdana, sans-serif;
+					text-decoration: none;
+					svg {
+						width: 100px;
+						height: 100px;
+					}
 				}
 			}
 		}
@@ -175,7 +183,17 @@ body {
 					color: white;
 					display: block;
 					text-decoration: none;
+					cursor: pointer;
+					@include transition(background .25s linear);
 					@include border-radius(3px);
+
+					.icon {
+						margin-right: 1em;
+					}
+
+					&:hover {
+						background: lighten($facebook, 5%);
+					}
 				}
 
 				.separator {
@@ -204,6 +222,75 @@ body {
 						top: 55%;
 						border-bottom: 1px solid rgba(0,0,0, .05);
 						border-top: 1px solid rgba(255,255,255, 1);
+					}
+				}
+
+				.form {
+					margin: 0;
+					.form-group {
+						position: relative;
+						svg {
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							margin: 0 45%;
+							width: 10%;
+							@include transition(width .3s, margin .3s);
+							line {
+								stroke: rgba(0,0,0, 0.35);
+								stroke-width: 2px;
+								// stroke-dasharray: 305 305;
+								// stroke-dashoffset: 31;
+							}
+						}
+
+						&.focus {
+							svg {
+								// position: absolute;
+								// bottom: 0;
+								left: 0;
+								margin: 0;
+								width: 100%;
+								line {
+									stroke: $lightBlue;
+									// stroke-dashoffset: 0;
+									@include transition(stroke-dashoffset 0.3s);
+									// stroke-width: 1px;
+								}
+							}
+						}
+
+						.signup-button {
+							height: auto;
+							line-height: 1.9em;
+							font-size: 1em;
+							margin: 1em 0 0;
+							background: $lightBlue;
+							border: 1px solid rgba(0,0,0, .1);
+							text-shadow: none;
+							color: $white;
+							@include border-radius(3px);
+							@include box-shadow(none);
+							@include transition(background .25s);
+
+							&:hover {
+								background: lighten($lightBlue, 5%);
+							}
+						}
+					}
+					.form-control {
+						font-family: 'Source Sans Pro', 'Helvetica-Neue', Helvetica, Arial, sans-serif;
+						height: auto;
+						line-height: 1.9em;
+						font-size: 1em;
+						width: 100%;
+						text-align: center;
+						border: 0;
+						@include box-shadow(none);
+
+						&:focus {
+							// border-bottom: 1px solid $lightBlue;
+						}
 					}
 				}
 			}
