@@ -1,7 +1,7 @@
 
 Router.map(function() {
 
-	this.route('create_session', {
+	this.route('home', {
 		path: '/',
 		loadingTemplate: 'loading',
 	});

@@ -1,11 +1,14 @@
 
+// Compass
 @import"compass/css3/border-radius";
-
 @import"compass/css3/box-shadow";
-
 @import"compass/css3/transition";
-
 @import"compass/css3/transform";
+
+/**
+	Font face
+**/
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Montserrat:400,700);
 
 /****************************/
 
@@ -13,22 +16,15 @@
 /****************************/
 
 $white: #fff;
-
 $gray: #fafafa;
-
 $darkGray: #777;
-
 $black: #191C21;
-
 $red: #F56F6C;
-
 $darkBlue: #4A5063;
-
 $yellow : #FFDC00;
-
 $lightBlue : #7EEAFF;
-
 $lightGreen: #C2D4A0;
+$facebook : #3C599B;
 
 /****************************/
 
@@ -37,37 +33,37 @@ $lightGreen: #C2D4A0;
 
 @mixin clearfix() {
 
-    *zoom: 1;
+	*zoom: 1;
 
-    &:before, &:after {
+	&:before, &:after {
 
-        content: " ";
+		content: " ";
 
-        display: table;
+		display: table;
 
-    }
+	}
 
-    &:after {
+	&:after {
 
-        clear: both;
+		clear: both;
 
-    }
+	}
 
 }
 
 @mixin userSelect() {
 
-    -webkit-touch-callout: none;
+	-webkit-touch-callout: none;
 
-    -webkit-user-select: none;
+	-webkit-user-select: none;
 
-    -khtml-user-select: none;
+	-khtml-user-select: none;
 
-    -moz-user-select: moz-none;
+	-moz-user-select: moz-none;
 
-    -ms-user-select: none;
+	-ms-user-select: none;
 
-    user-select: none;
+	user-select: none;
 
 }
 
@@ -79,133 +75,34 @@ $lightGreen: #C2D4A0;
 // http: //www.paulirish.com/2012/box-sizing-border-box-ftw
 
 *, *:before, *:after {
-
-    -moz-box-sizing: border-box;
-
-    -webkit-box-sizing: border-box;
-
-    box-sizing: border-box;
-
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .icon {
-
-    font-family: "fontello";
-
-    background-image: none;
-
-    font-style: normal;
-
-    font-weight: normal;
-
-    speak: none;
-
-    display: inline-block;
-
-    text-decoration: inherit;
-
-    width: 1em;
-
-    text-align: center;
-
-    font-variant: normal;
-
-    text-transform: none;
-
-    line-height: 1em;
-
+	font-family: "fontello";
+	background-image: none;
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	text-align: center;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1em;
 }
 
-textarea,
-
-input[type="text"],
-
-input[type="password"],
-
-input[type="datetime"],
-
-input[type="datetime-local"],
-
-input[type="date"],
-
-input[type="month"],
-
-input[type="time"],
-
-input[type="week"],
-
-input[type="number"],
-
-input[type="email"],
-
-input[type="url"],
-
-input[type="search"],
-
-input[type="tel"],
-
-input[type="color"],
-
-.uneditable-input,
-
-select {
-
-    // padding: .65em 1em;
-
-    // line-height: normal;
-
-    // height: auto;
-
-    // border: 1px solid rgba(0, 0, 0, .1);
-
+.full-height {
+	height: 100%;
 }
 
-input[type="submit"],
-
-input[type="button"],
-
-button,
-
-select {
-
-    outline: 0
-
-}
-
-.brad-top {
-
-    @include border-radius(3px 3px 0 0);
-
-}
-
-.brad-top-left {
-
-    @include border-radius(3px 0 0 0);
-
-}
-
-.brad-top-right {
-
-    @include border-radius(0 3px 0 0);
-
-}
-
-.brad-bottom {
-
-    @include border-radius(0 0 3px 3px);
-
-}
-
-.brad-bottom-left {
-
-    @include border-radius(0 0 0 3px);
-
-}
-
-.brad-bottom-right {
-
-    @include border-radius(0 0 3px 0);
-
+@mixin vertical-align {
+	position: relative;
+	top: 50%;
+	@include transform(translateY(-50%));
 }
 
 /****************************/
@@ -213,349 +110,431 @@ select {
 /**		Layout
 /***************************/
 
-html,
+html {
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
 
-body {
-
-    height: 100%;
-
-    position: relative;
-
+html, body {
+	height: 100%;
+	position: relative;
 }
 
 body {
-
-    font-family: open-sans, sans-serif;
-
+	font-family: 'Source Sans Pro', 'Helvetica-Neue', Helvetica, Arial, sans-serif;
+	line-height: 1.9em;
+	letter-spacing: 0px;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 17px;
+	margin: 0;
+	-webkit-font-smoothing: subpixel-antialiased !important;
+	background: $gray;
 }
 
 #wrapper {
+	.home-container {
+		.home-logo {
+			text-align: center;
+			position: relative;
+			.logo {
+				position: absolute;
+				top: 2em;
+				width: 100%;
+				a {
+					font-family: 'Montserrat', Verdana, sans-serif;
+				}
+			}
+		}
+
+		.home-body {
+			@include vertical-align;
+		}
+
+		#signup {
+			text-align: center;
+
+			h2 {
+				font-family: 'Montserrat', Verdana, sans-serif;
+				margin: 0;
+				text-transform: uppercase;
+			}
+
+			.signup {
+				padding: 1em;
+				background: $white;
+				margin-top: 1em;
+				border: 1px solid rgba(0,0,0, .1);
+				border-top: 1px solid rgba(0,0,0, .15);
+				border-bottom: 1px solid rgba(0,0,0, .15);
+
+				#sign-with-facebook > a {
+					background: $facebook;
+					padding: .5em 1em;
+					color: white;
+					display: block;
+					text-decoration: none;
+					@include border-radius(3px);
+				}
+
+				.separator {
+					font-family: georgia;
+					display: block;
+					padding: .5em 0;
+					position: relative;
+
+					&:before {
+						content: '';
+						width: 40%;
+						position: absolute;
+						height: 1px;
+						left: 0;
+						top: 55%;
+						border-bottom: 1px solid rgba(0,0,0, .05);
+						border-top: 1px solid rgba(255,255,255, 1);
+					}
+
+					&:after {
+						content: '';
+						width: 40%;
+						position: absolute;
+						height: 1px;
+						right: 0;
+						top: 55%;
+						border-bottom: 1px solid rgba(0,0,0, .05);
+						border-top: 1px solid rgba(255,255,255, 1);
+					}
+				}
+			}
+		}
+	}
+
+	.app-content {
+
+		position: relative;
 
-    .app-content {
+		.for-ie {
 
-        position: relative;
+			position: absolute;
 
-        .for-ie {
+			top: 3em;
 
-            position: absolute;
+			left: 3em;
 
-            top: 3em;
+			width: 150px;
 
-            left: 3em;
+			font-size: .8em;
 
-            width: 150px;
+		}
 
-            font-size: .8em;
+		.chatt-body-container {
 
-        }
+			.chatt-body {
+				padding-top: 1em;
 
-        .chatt-body-container {
+				.chatt-dialogs {
 
-            .chatt-body {
-                padding-top: 1em;
+					margin: 0;
 
-                .chatt-dialogs {
+					padding: 0 0 10em;
 
-                    margin: 0;
+					list-style: none;
 
-                    padding: 0 0 10em;
+					.dialog {
 
-                    list-style: none;
+						position: relative;
 
-                    .dialog {
+						@include transition(background .5s linear);
 
-                        position: relative;
+						&.unseen {
+							background: $yellow;
+						}
 
-                        @include transition(background .5s linear);
+						&.guest {
+							.dialog-cloud {
+								width: 50%;
+								border-right: 2px solid rgba(0,0,0, .15);
+							}
+						}
 
-                        &.unseen {
-                            background: $yellow;
-                        }
+						&.mine {
+							.dialog-cloud {
+								width: 50.25%;
+								border-left: 2px solid rgba(0,0,0, .15);
+							}
 
-                        &.guest {
-                            .dialog-cloud {
-                                width: 50%;
-                                border-right: 2px solid rgba(0,0,0, .15);
-                            }
-                        }
+						}
 
-                        &.mine {
-                            .dialog-cloud {
-                                width: 50.25%;
-                                border-left: 2px solid rgba(0,0,0, .15);
-                            }
+						.dialog-cloud {
+							padding: 1em 0;
+							position: relative;
+						}
 
-                        }
+						.chatter-name {
 
-                        .dialog-cloud {
-                            padding: 1em 0;
-                            position: relative;
-                        }
+						   position: absolute;
+						   bottom: 1em;
+						   font-size: .8em;
 
-                        .chatter-name {
+						}
 
-                           position: absolute;
-                           bottom: 1em;
-                           font-size: .8em;
+						.chatt-dialog {
+							width: 100%;
+							display: block;
+							padding: 1em;
+							background: $lightBlue;
+						}
 
-                        }
+						.chatt-time {
 
-                        .chatt-dialog {
-                            width: 100%;
-                            display: block;
-                            padding: 1em;
-                            background: $lightBlue;
-                        }
+						   position: absolute;
+						   bottom: 1em;
+						   font-size: .8em;
+						}
 
-                        .chatt-time {
+					}
 
-                           position: absolute;
-                           bottom: 1em;
-                           font-size: .8em;
-                        }
+					.new-notification {
+						.new-message {
+							background: $yellow;
+							padding: .5em 1em;
+							color: rgba(0,0,0, .35);
+						}
+					}
 
-                    }
+				}
 
-                    .new-notification {
-                        .new-message {
-                            background: $yellow;
-                            padding: .5em 1em;
-                            color: rgba(0,0,0, .35);
-                        }
-                    }
+			}
 
-                }
+		}
 
-            }
+		.chatt-input-container {
 
-        }
+			position: fixed;
 
-        .chatt-input-container {
+			bottom: 0;
 
-            position: fixed;
+			left: 0;
 
-            bottom: 0;
+			right: 0;
 
-            left: 0;
+			width: 100%;
 
-            right: 0;
+			padding: 1em 0;
 
-            width: 100%;
+			background: $gray;
 
-            padding: 1em 0;
+			.chatt-input-inner {
 
-            background: $gray;
+				.not-connected {
 
-            .chatt-input-inner {
+					font-size: 1.2em;
 
-                .not-connected {
+					color: $red;
 
-                    font-size: 1.2em;
+				}
 
-                    color: $red;
+				.add-name {
 
-                }
+					background: transparent;
 
-                .add-name {
+					background: #aaa\9;
 
-                    background: transparent;
+					padding: 0;
 
-                    background: #aaa\9;
+					margin: 0;
 
-                    padding: 0;
+					border: 0;
 
-                    margin: 0;
+					width: 100%;
 
-                    border: 0;
+					font-size: 2em;
 
-                    width: 100%;
+					line-height: 2;
 
-                    font-size: 2em;
+					height: 2em;
 
-                    line-height: 2;
+					@include box-shadow(none);
 
-                    height: 2em;
+					@include transition(all .25s linear);
 
-                    @include box-shadow(none);
+				}
 
-                    @include transition(all .25s linear);
+			}
 
-                }
+			#chatt-input {
 
-            }
+				position: relative;
 
-            #chatt-input {
+				.chatt-name {
 
-                position: relative;
+					position: relative;
 
-                .chatt-name {
+					top: 0;
 
-                    position: relative;
+					left: 0;
 
-                    top: 0;
+					line-height: 2;
 
-                    left: 0;
+					margin-right: 2em;
 
-                    line-height: 2;
+				}
 
-                    margin-right: 2em;
+				.chatt-input {
 
-                }
+					background: transparent;
 
-                .chatt-input {
+					background: #aaa\9;
 
-                    background: transparent;
+					padding: 0;
 
-                    background: #aaa\9;
+					margin: 0;
 
-                    padding: 0;
+					border: 0;
 
-                    margin: 0;
+					width: 80%;
 
-                    border: 0;
+					height: 2em;
 
-                    width: 80%;
+					@include box-shadow(none);
 
-                    height: 2em;
+					@include transition(all .25s linear);
 
-                    @include box-shadow(none);
+				}
 
-                    @include transition(all .25s linear);
+				.toggle-text {
 
-                }
+					position: absolute;
 
-                .toggle-text {
+					right: 0;
 
-                    position: absolute;
+					line-height: 2;
 
-                    right: 0;
+					cursor: pointer;
 
-                    line-height: 2;
+					&.upper {
 
-                    cursor: pointer;
+						color: $lightBlue;
+						text-shadow: 0 1px 2px rgba(126, 234, 255, 0.35);
+						@include transition(all .25s ease-in-out);
 
-                    &.upper {
+					}
 
-                        color: $lightBlue;
-                        text-shadow: 0 1px 2px rgba(126, 234, 255, 0.35);
-                        @include transition(all .25s ease-in-out);
+					&.lower {
 
-                    }
+						color: $darkGray;
+						text-shadow: 0 0 0 transparent;
+						@include transition(all .25s ease-in-out);
 
-                    &.lower {
+					}
 
-                        color: $darkGray;
-                        text-shadow: 0 0 0 transparent;
-                        @include transition(all .25s ease-in-out);
+					.first-text {
 
-                    }
+						font-size: .8em;
 
-                    .first-text {
+					}
 
-                        font-size: .8em;
+					.second-text {
 
-                    }
+						font-size: 1.2em;
 
-                    .second-text {
+					}
 
-                        font-size: 1.2em;
+				}
 
-                    }
+				.notification-switch {
+					cursor: pointer;
+				}
 
-                }
+				&.focus {
 
-                .notification-switch {
-                    cursor: pointer;
-                }
+					.chatt-name {
 
-                &.focus {
+						// top: 1em;
 
-                    .chatt-name {
+					}
 
-                        // top: 1em;
+					.chatt-input {
 
-                    }
+						line-height: 2;
 
-                    .chatt-input {
+						font-size: 2em;
 
-                        line-height: 2;
+						height: 2em;
 
-                        font-size: 2em;
+						padding: 0;
 
-                        height: 2em;
+					}
 
-                        padding: 0;
+					 &.large {
+						 .chatt-input {
 
-                    }
+							font-size: 1em;
 
-                     &.large {
-                         .chatt-input {
+							padding: 0;
 
-                            font-size: 1em;
+						}
+					}
 
-                            padding: 0;
+				}
 
-                        }
-                    }
+			}
 
-                }
+		}
 
-            }
-
-        }
-
-    }
+	}
 
 }
 
 .transition {
 
-    -webkit-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 
-    @include transition(all 0.3s !important);
+	@include transition(all 0.3s !important);
 
-    &.from-top {
+	&.from-top {
 
-        opacity: 0;
+		opacity: 0;
 
-        @include transform(translateY(-60%));
+		@include transform(translateY(-60%));
 
-    }
+	}
 
-    &.from-left {
+	&.from-left {
 
-        opacity: 0;
+		opacity: 0;
 
-        @include transform(translateX(-101%));
+		@include transform(translateX(-101%));
 
-    }
+	}
 
-    &.center {
+	&.center {
 
-        opacity: 1;
+		opacity: 1;
 
-        @include transform(translate3d(0, 0, 0));
+		@include transform(translate3d(0, 0, 0));
 
-    }
+	}
 
-    &.superscale {
+	&.superscale {
 
-        @include transform(scale(2));
+		@include transform(scale(2));
 
-    }
+	}
 
-    &.scale {
+	&.scale {
 
-        @include transform(scale(1));
+		@include transform(scale(1));
 
-    }
+	}
 
-    &.removing {
+	&.removing {
 
-        background: $red !important;
+		background: $red !important;
 
-        color: $gray;
+		color: $gray;
 
-    }
+	}
 
 }

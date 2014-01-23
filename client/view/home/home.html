@@ -1,0 +1,20 @@
+<template name="home">
+	<div class="container-fluid full-height">
+	    <div class="row-fluid full-height">
+	        <div class="home-container full-height span4 offset4">
+	        	<header class="home-logo">
+	        		<h1 class="logo">
+	        			<a href="/">Chatto</a>
+	        		</h1>
+	        	</header>
+	        	<div class="home-body">
+	        		{{#if signup}}
+		        	{{> signup}}
+		        	{{else}}
+		        	{{> login}}
+		        	{{/if}}
+	        	</div>
+	        </div>
+	    </div>
+	</div>
+</template>

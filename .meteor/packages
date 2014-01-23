@@ -11,3 +11,4 @@ iron-router
 momentjs
 accounts-base
 accounts-password
+accounts-facebook
