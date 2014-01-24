@@ -29,11 +29,34 @@
 	        		</h1>
 	        	</header>
 	        	<div class="home-body">
-	        		{{#if signup}}
-		        	{{> signup}}
-		        	{{else}}
-		        	{{> login}}
-		        	{{/if}}
+	        		<section id="authenticate" class="{{page_class}}">
+	        			{{#isolate}}
+	        			{{#if login}}
+	        			<h2>Login</h2>
+	        			{{/if}}
+	        			{{/isolate}}
+
+						<div class="home-content">
+						{{#isolate}}
+							{{#if login}}
+		        				{{> login}}
+							{{else}}
+								{{> signup}}
+							{{/if}}
+						{{/isolate}}
+						</div>
+
+						{{#if login}}
+						<footer class="login-footer">
+							<p>No account? <a class="to-signup">Sign Up for FREE</a></p>
+						</footer>
+						{{else}}
+						<footer class="signup-footer">
+							<p>Got an account? <a class="to-login">Login Instantly</a></p>
+						</footer>
+						{{/if}}
+
+					</section>
 	        	</div>
 	        </div>
 	    </div>

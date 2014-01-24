@@ -112,6 +112,19 @@ $facebook : #3C599B;
 /**		Layout
 /***************************/
 
+a {
+	color: $lightBlue;
+	text-decoration: none;
+	@include transition(color .25s);
+	&:hover {
+		color: darken($lightBlue, 10%);
+	}
+}
+
+input, button, textarea {
+	font-family: 'Source Sans Pro', 'Helvetica-Neue', Helvetica, Arial, sans-serif;
+}
+
 html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -131,7 +144,7 @@ body {
 	font-style: normal;
 	font-size: 17px;
 	margin: 0;
-	-webkit-font-smoothing: subpixel-antialiased !important;
+	-webkit-font-smoothing: antialiased !important;
 	background: $gray;
 }
 
@@ -158,44 +171,122 @@ body {
 
 		.home-body {
 			@include vertical-align;
-		}
 
-		#signup {
-			text-align: center;
-
-			h2 {
-				font-family: 'Montserrat', Verdana, sans-serif;
-				margin: 0;
-				text-transform: uppercase;
-			}
-
-			.signup {
-				padding: 1em;
-				background: $white;
-				margin-top: 1em;
-				border: 1px solid rgba(0,0,0, .1);
-				border-top: 1px solid rgba(0,0,0, .15);
-				border-bottom: 1px solid rgba(0,0,0, .15);
-
-				#sign-with-facebook > a {
-					background: $facebook;
-					padding: .5em 1em;
-					color: white;
-					display: block;
-					text-decoration: none;
-					cursor: pointer;
-					@include transition(background .25s linear);
-					@include border-radius(3px);
-
-					.icon {
-						margin-right: 1em;
-					}
-
-					&:hover {
-						background: lighten($facebook, 5%);
-					}
+			#authenticate {
+				text-align: center;
+				h2 {
+					font-family: 'Montserrat', Verdana, sans-serif;
+					margin: 0;
+					text-transform: uppercase;
 				}
 
+				.home-content {
+					padding: 1em;
+					background: $white;
+					margin-top: 1em;
+					border: 1px solid rgba(0,0,0, .1);
+					border-top: 1px solid rgba(0,0,0, .15);
+					border-bottom: 1px solid rgba(0,0,0, .15);
+
+					.login, .signup {
+						opacity: 0;
+						-webkit-font-smoothing: antialiased;
+						&.visible {
+							opacity: 1;
+							@include translateZ(0);
+							@include backface-visibility(hidden);
+							@include transition(opacity .25s);
+						}
+					}
+
+					#sign-with-facebook > a {
+						background: $facebook;
+						padding: .5em 1em;
+						color: white;
+						display: block;
+						text-decoration: none;
+						cursor: pointer;
+						@include transition(background .25s linear);
+						@include border-radius(3px);
+
+						.icon {
+							margin-right: 1em;
+						}
+
+						&:hover {
+							background: lighten($facebook, 5%);
+						}
+					}
+
+					.form {
+						margin: 0;
+						.form-group {
+							position: relative;
+							margin-bottom: 1em;
+							padding-bottom: .5em;
+							&:after {
+								content: '';
+								position: absolute;
+								bottom: 0;
+								left: 0;
+								margin: 0 45%;
+								width: 10%;
+								border-top: 1px solid $white;
+								border-bottom: 1px solid rgba(0,0,0, .1);
+								@include transition(width .3s, margin .3s);
+							}
+
+							&.focus {
+								&:after {
+									left: 0;
+									margin: 0;
+									width: 100%;
+									border-bottom: 1px solid $lightBlue;
+								}
+							}
+
+							&.bottom {
+								margin-bottom: 0;
+								padding-bottom: 0;
+								&:after {
+									border : 0;
+								}
+							}
+
+							.signup-button, .login-button {
+								height: auto;
+								line-height: 1.9em;
+								font-size: 1em;
+								margin: 1em 0 0;
+								background: $lightBlue;
+								border: 1px solid rgba(0,0,0, .1);
+								text-shadow: none;
+								color: $white;
+								@include border-radius(3px);
+								@include box-shadow(none);
+								@include transition(background .25s);
+
+								&:hover {
+									background: lighten($lightBlue, 5%);
+								}
+							}
+						}
+						.form-control {
+							font-family: 'Source Sans Pro', 'Helvetica-Neue', Helvetica, Arial, sans-serif;
+							height: auto;
+							line-height: 1.9em;
+							font-size: 1em;
+							width: 100%;
+							text-align: center;
+							border: 0;
+							margin: 0;
+							@include box-shadow(none);
+						}
+					}
+				}
+			}
+
+			.signup-page {
 				.separator {
 					font-family: georgia;
 					display: block;
@@ -224,73 +315,25 @@ body {
 						border-top: 1px solid rgba(255,255,255, 1);
 					}
 				}
-
-				.form {
-					margin: 0;
-					.form-group {
-						position: relative;
-						svg {
-							position: absolute;
-							bottom: 0;
-							left: 0;
-							margin: 0 45%;
-							width: 10%;
-							@include transition(width .3s, margin .3s);
-							line {
-								stroke: rgba(0,0,0, 0.35);
-								stroke-width: 2px;
-								// stroke-dasharray: 305 305;
-								// stroke-dashoffset: 31;
-							}
-						}
-
-						&.focus {
-							svg {
-								// position: absolute;
-								// bottom: 0;
-								left: 0;
-								margin: 0;
-								width: 100%;
-								line {
-									stroke: $lightBlue;
-									// stroke-dashoffset: 0;
-									@include transition(stroke-dashoffset 0.3s);
-									// stroke-width: 1px;
-								}
-							}
-						}
-
-						.signup-button {
-							height: auto;
-							line-height: 1.9em;
-							font-size: 1em;
-							margin: 1em 0 0;
-							background: $lightBlue;
-							border: 1px solid rgba(0,0,0, .1);
-							text-shadow: none;
-							color: $white;
-							@include border-radius(3px);
-							@include box-shadow(none);
-							@include transition(background .25s);
-
-							&:hover {
-								background: lighten($lightBlue, 5%);
-							}
-						}
+				.signup-footer {
+					a {
+						cursor: pointer;
+						text-decoration: none;
 					}
-					.form-control {
-						font-family: 'Source Sans Pro', 'Helvetica-Neue', Helvetica, Arial, sans-serif;
-						height: auto;
-						line-height: 1.9em;
-						font-size: 1em;
-						width: 100%;
-						text-align: center;
-						border: 0;
-						@include box-shadow(none);
+				}
+			}
 
-						&:focus {
-							// border-bottom: 1px solid $lightBlue;
-						}
+			.login-page {
+				.separator {
+					display: block;
+					height: 1px;
+					border-bottom: 1px solid rgba(0,0,0, .05);
+					border-top: 1px solid rgba(255,255,255, 1);
+				}
+				.login-footer {
+					a {
+						cursor: pointer;
+						text-decoration: none;
 					}
 				}
 			}

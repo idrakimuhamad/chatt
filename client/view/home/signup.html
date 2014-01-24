@@ -1,39 +1,25 @@
 <template name="signup">
-	<section id="signup">
-		<div class="signup">
-			<div id="sign-with-facebook">
-				<a class="facebook-button"><i class="icon">7</i>Sign Up With Facebook</a>
-			</div>
-			<span class="separator">
-				Or
-			</span>
-			<form class="form">
-				<p>Sign up with your email</p>
-				<div class="form-group">
-					<input type="text" class="username form-control" spellcheck="false" required placeholder="Username">
-					<svg xmlns="http://www.w3.org/2000/svg" height="2" class="form-line">
-					<line x1="0" y1="0" x2="100%" y2="0"></line>
-					Sorry, your browser does not support inline SVG.
-					</svg>
-				</div>
-				<div class="form-group">
-					<input type="email" class="email form-control" spellcheck="false" required placeholder="Email">
-					<svg height="2" class="form-line">
-					<line x1="0" y1="0" x2="100%" y2="0"></line>
-					Sorry, your browser does not support inline SVG.
-					</svg>
-				</div>
-				<div class="form-group">
-					<input type="password" class="password form-control" required placeholder="Password">
-					<svg height="2" class="form-line">
-					<line x1="0" y1="0" x2="100%" y2="0"></line>
-					Sorry, your browser does not support inline SVG.
-					</svg>
-				</div>
-				<div class="form-group">
-					<button class="btn btn-block signup-button" type="submit">Signup</button>
-				</div>
-			</form>
+	<div class="signup">
+		<div id="sign-with-facebook">
+			<a class="facebook-button"><i class="icon">7</i>Sign Up With Facebook</a>
 		</div>
-	</section>
+		<span class="separator">
+			Or
+		</span>
+		<form class="form">
+			<p>Sign up with your email</p>
+			<div class="form-group">
+				<input type="text" class="username form-control" spellcheck="false" required placeholder="Username">
+			</div>
+			<div class="form-group">
+				<input type="email" class="email form-control" spellcheck="false" required placeholder="Email">
+			</div>
+			<div class="form-group">
+				<input type="password" class="password form-control" required placeholder="Password">
+			</div>
+			<div class="form-group bottom">
+				<button class="btn btn-block signup-button" type="submit">Signup</button>
+			</div>
+		</form>
+	</div>
 </template>
