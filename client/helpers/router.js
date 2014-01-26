@@ -6,6 +6,15 @@ Router.map(function() {
 		loadingTemplate: 'loading',
 	});
 
+	this.route('dashboard', {
+		path: '/dashboard/:username',
+		loadingTemplate: 'loading',
+
+		data : function() {
+			return Meteor.users.findOne({ username : this.params.username });
+		}
+	});
+
 	this.route('chatt_page', {
 		path: '/chat/:_id',
 

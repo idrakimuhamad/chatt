@@ -11,6 +11,9 @@ Template.home.helpers({
 	},
 	page_class : function() {
 		return Session.get('isSignup') ? 'signup-page' : 'login-page';
+	},
+	creating_user : function() {
+		return Session.get('creating_user');
 	}
 });
 
@@ -59,6 +62,29 @@ Template.signup.events({
 	},
 	'blur .form-control' : function(e,t) {
 		$(e.currentTarget).parent('.form-group').removeClass('focus');
+	},
+	'submit .form' : function(e,t) {
+
+		e.preventDefault();
+
+		Session.set('creating_user', true);
+
+		var options = {
+			username : t.find('.username').value,
+			email : t.find('.email').value,
+			password : t.find('.password').value
+		};
+
+		Meteor.call('createAccount', options, function (error, result) {
+			if(!error) {
+				Meteor.setTimeout(function () {
+					var user = Meteor.users.findOne({ _id : result }).username;
+                	// Router.go('dashboard', { username : user });
+				}, 3000);
+			} else {
+				alert('Oppss! Something went wrong. ' + error.reason);
+			}
+		});
 	}
 });
 

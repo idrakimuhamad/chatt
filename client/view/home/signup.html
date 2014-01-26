@@ -1,5 +1,10 @@
 <template name="signup">
 	<div class="signup">
+		{{#if creating_user}}
+		<div class="loading">
+			Creating user. Please wait for a moment.
+		</div>
+		{{else}}
 		<div id="sign-with-facebook">
 			<a class="facebook-button"><i class="icon">7</i>Sign Up With Facebook</a>
 		</div>
@@ -21,5 +26,6 @@
 				<button class="btn btn-block signup-button" type="submit">Signup</button>
 			</div>
 		</form>
+		{{/if}}
 	</div>
 </template>
