@@ -37,5 +37,14 @@ Template.signup.events({
 				alert('Oppss! Something went wrong. ' + error.reason);
 			}
 		});
+	},
+	'click #sign-with-facebook .facebook-button' : function(e,t) {
+		e.preventDefault();
+
+		Meteor.loginWithFacebook({
+			requestPermissions : ['email']
+		}, function(err, res) {
+			if(!err) {}
+		});
 	}
 });
