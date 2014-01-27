@@ -10,8 +10,65 @@ Router.map(function() {
 		path: '/dashboard/:username',
 		loadingTemplate: 'loading',
 
+		waitOn : function() {
+			return [
+				Meteor.subscribe('currentUser'),
+				Meteor.subscribe('chatt_user_participate', Meteor.userId())
+			]
+		}
+	});
+
+	this.route('chatt', {
+		path: '/:chatt',
+
 		data : function() {
-			return Meteor.users.findOne({ username : this.params.username });
+			return [
+			Chatt.findOne({ chatt : this.params.chatt })
+			];
+		},
+
+		waitOn: function () {
+			return [
+			Meteor.subscribe('selected_chatt', this.params.chatt)
+			];
+		},
+
+		before : function() {
+            var chattId = Chatt.findOne({ chatt : this.params.chatt })._id;
+
+			Meteor.subscribe('chatt_dialogs', chattId);
+			Meteor.subscribe('notification', chattId);
+			Session.set('current_chatt', chattId);
+		}
+	});
+
+	this.route('profile', {
+		path: '/profile',
+		loadingTemplate: 'loading',
+
+		data : function() {
+			return Meteor.user();
+		},
+
+		waitOn : function() {
+			return [
+				Meteor.subscribe('currentUser')
+			]
+		}
+	});
+
+	this.route('settings', {
+		path: '/settings',
+		loadingTemplate: 'loading',
+
+		data : function() {
+			return Meteor.user();
+		},
+
+		waitOn : function() {
+			return [
+				Meteor.subscribe('currentUser')
+			]
 		}
 	});
 

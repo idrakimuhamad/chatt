@@ -12,12 +12,10 @@ Meteor.methods({
 			created : moment().valueOf()
 		});
 
-		var userId = Accounts.createUser(user);
+		return Accounts.createUser(user);
 
-		return userId;
 	}
 });
 
 
 
-		

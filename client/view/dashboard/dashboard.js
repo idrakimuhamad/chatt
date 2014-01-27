@@ -1,0 +1,60 @@
+Session.setDefault('creating_chatt', false);
+
+Template.dashboard.helpers({
+	username : function() {
+		return Meteor.user().username;
+	},
+	no_chat : function() {
+		return Chatt.find({}).count() > 0 ? false : true;
+	},
+	avatar_url : function() {
+		var userProfile = Meteor.user().profile,
+			avatar = userProfile.avatar;
+
+		if(avatar) return avatar;
+	},
+	chatt : function() {
+		return Chatt.find({});
+	},
+	chatt_name : function() {
+		return this.chatt;
+	},
+	chatt_url : function() {
+		return encodeURIComponent(this.chatt);
+	},
+	last_chat : function() {
+		if(this.lastMessage) {
+			return this.lastMessage;
+		} else {
+			var created = moment(this.created).format("YYYYMMDD");
+			return moment(created, "YYYYMMDD").fromNow();
+		}
+	}
+});
+
+Template.dashboard.events({
+	'keyup .create-chatt .chatt-name': function (e,t) {
+		if(e.which == 13) {
+			e.preventDefault();
+
+			Session.set('creating_chatt', true);
+
+			var options = {
+				name : t.find('.chatt-name').value,
+				userId : Meteor.userId()
+			};
+
+			if(options) {
+				Meteor.call('chat', options, function (error, result) {
+					if(!error && result) {
+						Meteor.setTimeout(function () {
+							Session.set('creating_chatt', false);
+							Router.go('chatt', { chatt : options.name });
+						}, 500);
+					}
+				});
+
+			}
+		}
+	}
+});

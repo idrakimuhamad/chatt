@@ -19,15 +19,24 @@ Chatt.allow({
 
 Meteor.methods({
 	chat: function (chat) {
-		if (!chat) {
+		if (!chat.name) {
       		throw new Meteor.Error(422, 'A name for this session would be awesome. Thanks.');
 		}
 
-		chatt = {
-			chat : chat,
-			timestamp : moment().valueOf()
-		};
+		var exists = Chatt.find({ chatt : chat.name }).count();
 
-		return Chatt.insert(chatt);
+		if(exists > 0) {
+			Router.go('chatt', { chatt : chat.name });
+		} else {
+			var chatt = {
+				chatt : chat.name,
+				createdBy : chat.userId,
+				chatters : {
+					chatter : chat.userId
+				},
+				created : moment().valueOf()
+			};
+			return Chatt.insert(chatt);
+		}
 	}
 });

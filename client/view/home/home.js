@@ -11,31 +11,8 @@ Template.home.helpers({
 	},
 	page_class : function() {
 		return Session.get('isSignup') ? 'signup-page' : 'login-page';
-	},
-	creating_user : function() {
-		return Session.get('creating_user');
 	}
 });
-
-Template.signup.rendered = function() {
-	if (!this.rendered) {
-		this.rendered = true;
-
-		Meteor.setTimeout(function () {
-			$('.signup').addClass('visible');
-		}, 300);
-	}
-}
-
-Template.login.rendered = function() {
-	if (!this.rendered) {
-		this.rendered = true;
-
-		Meteor.setTimeout(function () {
-			$('.login').addClass('visible');
-		}, 300);
-	}
-}
 
 Template.home.events({
 	'tap .signup-footer .to-login, click .signup-footer .to-login' : function(e,t) {
@@ -53,46 +30,5 @@ Template.home.events({
 			Session.set('isSignup', true);
 			// $(t.find('.signup')).addClass('flip');
 		// }, 250);
-	}
-});
-
-Template.signup.events({
-	'focus .form-control' : function(e,t) {
-		$(e.currentTarget).parent('.form-group').addClass('focus');
-	},
-	'blur .form-control' : function(e,t) {
-		$(e.currentTarget).parent('.form-group').removeClass('focus');
-	},
-	'submit .form' : function(e,t) {
-
-		e.preventDefault();
-
-		Session.set('creating_user', true);
-
-		var options = {
-			username : t.find('.username').value,
-			email : t.find('.email').value,
-			password : t.find('.password').value
-		};
-
-		Meteor.call('createAccount', options, function (error, result) {
-			if(!error) {
-				Meteor.setTimeout(function () {
-					var user = Meteor.users.findOne({ _id : result }).username;
-                	// Router.go('dashboard', { username : user });
-				}, 3000);
-			} else {
-				alert('Oppss! Something went wrong. ' + error.reason);
-			}
-		});
-	}
-});
-
-Template.login.events({
-	'focus .form-control' : function(e,t) {
-		$(e.currentTarget).parent('.form-group').addClass('focus');
-	},
-	'blur .form-control' : function(e,t) {
-		$(e.currentTarget).parent('.form-group').removeClass('focus');
 	}
 });

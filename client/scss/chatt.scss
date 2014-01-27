@@ -114,10 +114,10 @@ $facebook : #3C599B;
 
 a {
 	color: $lightBlue;
-	text-decoration: none;
 	@include transition(color .25s);
 	&:hover {
 		color: darken($lightBlue, 10%);
+		text-decoration: none;
 	}
 }
 
@@ -160,7 +160,6 @@ body {
 				margin: 0;
 				a {
 					font-family: 'Montserrat', Verdana, sans-serif;
-					text-decoration: none;
 					svg {
 						width: 100px;
 						height: 100px;
@@ -189,14 +188,7 @@ body {
 					border-bottom: 1px solid rgba(0,0,0, .15);
 
 					.login, .signup {
-						opacity: 0;
 						-webkit-font-smoothing: antialiased;
-						&.visible {
-							opacity: 1;
-							@include translateZ(0);
-							@include backface-visibility(hidden);
-							@include transition(opacity .25s);
-						}
 					}
 
 					#sign-with-facebook > a {
@@ -204,7 +196,6 @@ body {
 						padding: .5em 1em;
 						color: white;
 						display: block;
-						text-decoration: none;
 						cursor: pointer;
 						@include transition(background .25s linear);
 						@include border-radius(3px);
@@ -318,7 +309,6 @@ body {
 				.signup-footer {
 					a {
 						cursor: pointer;
-						text-decoration: none;
 					}
 				}
 			}
@@ -333,7 +323,122 @@ body {
 				.login-footer {
 					a {
 						cursor: pointer;
-						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+
+	.dashboard {
+		.sidebar {
+			background: $darkBlue;
+			padding: 1em 0;
+			color: $gray;
+
+			.avatar {
+				text-align: center;
+				cursor: pointer;
+				.avatar-circle {
+					display: block;
+					font-size: 3em;
+					color: $lightBlue;
+					text-shadow: 0 1px 1px rgba(0,0,0, .15);
+				}
+			}
+
+			.nav-dashboard {
+				padding-top: 3em;
+				ul {
+					list-style: none;
+					padding: 0;
+					margin: 0;
+					li {
+						a {
+							color: lighten($darkBlue, 30%);
+							border-top: 1px solid rgba(0,0,0, .15);
+							cursor: pointer;
+							padding: 0 1em;
+							padding: .5em 1em;
+							display: block;
+
+							.icon {
+								margin-right: .5em;
+							}
+							&.logout {
+								.icon {
+									position: relative;
+									left: 2px;
+								}
+							}
+							&:hover {
+								color: lighten($darkBlue, 50%);
+							}
+						}
+
+						&:last-child {
+							a {
+								border-bottom: 1px solid rgba(0,0,0, .15);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.dashboard-content {
+			.content {
+				padding: 1em 1em 1em 0;
+				border-bottom: 1px solid rgba(0,0,0, .05);
+				h3 {
+					margin: 0;
+				}
+			}
+			.chatt-list {
+				padding: 1em 0;
+				.create-chatt {
+					.chatt-name {
+						padding: 0 0 .5em 0;
+						width: 80%;
+						background: none;
+						line-height: normal;
+						height: auto;
+						font-size: 2em;
+						margin: 0;
+						border: 0;
+						border-bottom: 1px solid rgba(0,0,0, .15);
+						@include box-shadow(none);
+						@include border-radius(0);
+						@include transition(all .25s);
+						outline: 0;
+
+						&:focus {
+							border-bottom: 1px solid $lightBlue;
+						}
+					}
+				}
+
+				.chatts {
+					list-style-type: none;
+					margin: 0;
+					border: 1px solid rgba(0,0,0, .1);
+					li {
+						a {
+							display: block;
+							position: relative;
+							padding: 1em;
+							border-bottom: 1px solid rgba(0,0,0, .1);
+							.last-dialog {
+								font-size: .7em;
+								position: absolute;
+								right: 1em;
+								// top: 35%;
+							}
+						}
+						&:last-child {
+							a {
+								border-bottom: 0;
+							}
+						}
 					}
 				}
 			}
