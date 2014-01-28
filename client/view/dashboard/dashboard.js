@@ -29,7 +29,7 @@ Template.dashboard.helpers({
 		return this.chatt;
 	},
 	chatt_url : function() {
-		return encodeURIComponent(this.chatt);
+		// return this;
 	},
 	last_chat : function() {
 		if(this.lastMessage) {
@@ -58,10 +58,11 @@ Template.dashboard.events({
 					if(!error && result) {
 						Meteor.setTimeout(function () {
 							Session.set('creating_chatt', false);
-							Router.go('chatt', { chatt : options.name });
+							Router.go('chatt', { _id : result });
 						}, 500);
 					} else if(!result) {
-						Router.go('chatt', { chatt : options.name });
+						var chattId = Chatt.find({ chatt : options.name })._id;
+						Router.go('chatt', { _id : chattId });
 					}
 				});
 

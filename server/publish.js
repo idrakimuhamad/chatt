@@ -2,8 +2,8 @@ Meteor.publish('chatt_user_participate', function(userId) {
     return Chatt.find( { "chatters.chatter": userId } );
 });
 
-Meteor.publish('selected_chatt', function(name) {
-    return Chatt.find({ chatt : name });
+Meteor.publish('selected_chatt', function(id) {
+    return Chatt.find(id);
 });
 
 Meteor.publish('chatt_dialogs', function (chattId) {

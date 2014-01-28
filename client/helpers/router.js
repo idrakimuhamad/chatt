@@ -16,6 +16,12 @@ Router.map(function() {
 		path: '/dashboard/:username',
 		loadingTemplate: 'loading',
 
+		data : function() {
+			return [
+			Chatt.find({ "chatters.chatter": Meteor.userId() })
+			];
+		},
+
 		waitOn : function() {
 			return [
 				Meteor.subscribe('currentUser'),
@@ -25,26 +31,24 @@ Router.map(function() {
 	});
 
 	this.route('chatt', {
-		path: '/:chatt',
+		path: '/:_id',
 
 		data : function() {
 			return [
-			Chatt.findOne({ chatt : this.params.chatt })
+			Chatt.findOne({ _id : this.params._id })
 			];
 		},
 
 		waitOn: function () {
 			return [
-			Meteor.subscribe('selected_chatt', this.params.chatt)
+			Meteor.subscribe('selected_chatt', this.params._id),
+			Meteor.subscribe('chatt_dialogs', this.params._id),
+			Meteor.subscribe('notification', this.params._id)
 			];
 		},
 
-		before : function() {
-			var chattId = Chatt.findOne({ chatt : this.params.chatt })._id;
-
-			Meteor.subscribe('chatt_dialogs', chattId);
-			Meteor.subscribe('notification', chattId);
-			Session.set('current_chatt', chattId);
+		before : function() {			
+			Session.set('current_chatt', this.params._id);
 		}
 	});
 

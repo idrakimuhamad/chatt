@@ -1,17 +1,23 @@
 <template name="chatt_input">
 	<footer class="chatt-input">
-		<div class="input-content span4">
-			<div class="avatar-container">
-			{{#if avatar_url}}
-				<img src="{{avatar_url}}" alt="Profile Picture">
-			{{else}}
-				<span class="avatar-circle">
-					<i class="icon">h</i>
-				</span>
-			{{/if}}
-			</div>
-			<div class="chatt-input-text">
-				<input type="text" id="chatt-entry" placeholder="Type and Enter">
+		<div class="row-fluid">
+			<div class="input-content span4">
+				<div class="container-fluid">
+					<div class="row-fluid">
+						<div class="avatar-container span2">
+						{{#if avatar_url}}
+							<img src="{{avatar_url}}" alt="Profile Picture">
+						{{else}}
+							<span class="avatar-circle">
+								<i class="icon">h</i>
+							</span>
+						{{/if}}
+						</div>
+						<div class="chatt-input-text span10">
+							<textarea id="chatt-entry" rows="3" placeholder="Type and Enter"></textarea>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</footer>
