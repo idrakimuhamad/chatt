@@ -1,5 +1,9 @@
 Session.setDefault('creating_chatt', false);
 
+Template.dashboard.rendered = function () {
+	setTitle('Dashboard');
+};
+
 Template.dashboard.helpers({
 	username : function() {
 		return Meteor.user().username;
@@ -7,11 +11,16 @@ Template.dashboard.helpers({
 	no_chat : function() {
 		return Chatt.find({}).count() > 0 ? false : true;
 	},
+	creating_chatt : function() {
+		return Session.get('creating_chatt');
+	},
 	avatar_url : function() {
-		var userProfile = Meteor.user().profile,
-			avatar = userProfile.avatar;
+		var userProfile = Meteor.user().profile;
 
-		if(avatar) return avatar;
+		if(userProfile) {
+			var avatar = userProfile.avatar;
+			return avatar;
+		}
 	},
 	chatt : function() {
 		return Chatt.find({});
@@ -51,6 +60,8 @@ Template.dashboard.events({
 							Session.set('creating_chatt', false);
 							Router.go('chatt', { chatt : options.name });
 						}, 500);
+					} else if(!result) {
+						Router.go('chatt', { chatt : options.name });
 					}
 				});
 

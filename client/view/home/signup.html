@@ -5,6 +5,11 @@
 			Creating user. Please wait for a moment.
 		</div>
 		{{else}}
+		{{#if signin_with_facebook}}
+		<div class="loading">
+			Doing some brilliant stuff with your Facebook.
+		</div>
+		{{else}}
 		<div id="sign-with-facebook">
 			<a class="facebook-button"><i class="icon">7</i>Sign Up With Facebook</a>
 		</div>
@@ -26,6 +31,7 @@
 				<button class="btn btn-block signup-button" type="submit">Signup</button>
 			</div>
 		</form>
+		{{/if}}
 		{{/if}}
 	</div>
 </template>

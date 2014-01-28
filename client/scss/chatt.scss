@@ -150,6 +150,10 @@ body {
 
 #wrapper {
 	.home-container {
+		margin: 0 auto;
+		display: block;
+		float: none;
+		width: 20em;
 		.home-logo {
 			text-align: center;
 			position: relative;
@@ -191,7 +195,7 @@ body {
 						-webkit-font-smoothing: antialiased;
 					}
 
-					#sign-with-facebook > a {
+					#sign-with-facebook > a, #log-with-facebook > a {
 						background: $facebook;
 						padding: .5em 1em;
 						color: white;
@@ -338,6 +342,12 @@ body {
 			.avatar {
 				text-align: center;
 				cursor: pointer;
+				img {
+					width: 50px;
+					height: auto;
+					@include box-shadow(0 1px 1px rgba(0,0,0, .15));
+					@include border-radius(3em);
+				}
 				.avatar-circle {
 					display: block;
 					font-size: 3em;
@@ -442,6 +452,37 @@ body {
 					}
 				}
 			}
+		}
+	}
+
+	.chatt-container {
+		min-width: 25em;
+		margin: 0 auto;
+		float: none;
+		max-width: 30em;
+		border: 1px solid rgba(0,0,0, .15);
+		border-bottom: 0;
+		border-top: 0;
+		padding: 0 1em;
+		position: relative;
+		.chatt-title {
+			margin: 0;
+			padding: 1em 0;
+		}
+	}
+
+	.chatt-input {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		float: none;
+		padding: 0 1em;
+		.input-content {
+			min-width: 25em;
+			max-width: 30em;
+			margin: 0 auto;
+			float: none;
 		}
 	}
 

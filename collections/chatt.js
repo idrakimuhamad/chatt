@@ -26,7 +26,7 @@ Meteor.methods({
 		var exists = Chatt.find({ chatt : chat.name }).count();
 
 		if(exists > 0) {
-			Router.go('chatt', { chatt : chat.name });
+			return;
 		} else {
 			var chatt = {
 				chatt : chat.name,

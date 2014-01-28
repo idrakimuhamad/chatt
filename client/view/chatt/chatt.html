@@ -1,9 +1,21 @@
 <template name="chatt">
-	<div class="container-fluid">
-	    <div class="row-fluid">
-	        <div class="chatt-container">
-
+	<div class="container-fluid full-height">
+	    <div class="row-fluid full-height">
+	        <div class="chatt-container span4 full-height">
+	        	<header class="chatt-title"><h3>{{title}}</h3></header>
+	        	<div class="chatt-content">
+	        		<ul id="dialogs">
+	        			{{#each cloud}}
+	        			<li class="cloud">
+	        				{{#each dialog}}
+	        				<div class="dialog"></div>
+	        				{{/each}}
+	        			</li>
+	        			{{/each}}
+	        		</ul>
+	        	</div>
 	        </div>
 	    </div>
 	</div>
+	{{> chatt_input}}
 </template>

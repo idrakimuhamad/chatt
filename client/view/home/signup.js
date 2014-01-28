@@ -1,8 +1,16 @@
 Session.setDefault('creating_user', false);
+Session.setDefault('signin_with_facebook', false);
+
+Template.signup.rendered = function () {
+	setTitle('Sign Up');
+};
 
 Template.signup.helpers({
 	creating_user : function() {
 		return Session.get('creating_user');
+	},
+	signin_with_facebook : function() {
+		return Session.get('signin_with_facebook');
 	}
 });
 
@@ -41,10 +49,16 @@ Template.signup.events({
 	'click #sign-with-facebook .facebook-button' : function(e,t) {
 		e.preventDefault();
 
+		Session.set('signin_with_facebook', true);
+
 		Meteor.loginWithFacebook({
 			requestPermissions : ['email']
 		}, function(err, res) {
-			if(!err) {}
+			if(!err) {
+				Session.set('signin_with_facebook', false);
+				var user = Meteor.user().username;
+				Router.go('dashboard', { username : user });
+			}
 		});
 	}
 });

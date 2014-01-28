@@ -1,0 +1,18 @@
+<template name="chatt_input">
+	<footer class="chatt-input">
+		<div class="input-content span4">
+			<div class="avatar-container">
+			{{#if avatar_url}}
+				<img src="{{avatar_url}}" alt="Profile Picture">
+			{{else}}
+				<span class="avatar-circle">
+					<i class="icon">h</i>
+				</span>
+			{{/if}}
+			</div>
+			<div class="chatt-input-text">
+				<input type="text" id="chatt-entry" placeholder="Type and Enter">
+			</div>
+		</div>
+	</footer>
+</template>

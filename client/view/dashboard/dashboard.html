@@ -2,7 +2,7 @@
 	<div class="full-height">
 	    <div class="row-fluid full-height">
 	        <div class="dashboard full-height">
-				<aside class="sidebar full-height span3">
+				<aside class="sidebar full-height span2">
 					<header class="avatar">
 					{{#if avatar_url}}
 						<img src="{{avatar_url}}" alt="Profile Picture">
@@ -21,7 +21,7 @@
 						</ul>
 					</nav>
 				</aside>
-				<div class="dashboard-content span9">
+				<div class="dashboard-content span10">
 					<div class="container-fluid">
 						<header class="content">
 							<h3>Welcome {{username}}</h3>
@@ -32,6 +32,9 @@
 							<div class="create-chatt">
 								<input type="text" class="chatt-name" placeholder="Type your Chatt name and press Enter to join" required>
 							</div>
+							{{else}}
+							{{#if creating_chatt}}
+							<p>Creating Chatt Session...</p>
 							{{else}}
 							<h5>Chatt History</h5>
 							<ul class="chatts">
@@ -44,6 +47,7 @@
 								</li>
 								{{/each}}
 							</ul>
+							{{/if}}
 							{{/if}}
 						</div>
 					</div>

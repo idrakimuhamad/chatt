@@ -4,6 +4,12 @@ Router.map(function() {
 	this.route('home', {
 		path: '/',
 		loadingTemplate: 'loading',
+
+		// before : function() {
+		// 	if (Meteor.user()) {
+		// 		Router.go('dashboard', { username : Meteor.user().username });
+		// 	}
+		// }
 	});
 
 	this.route('dashboard', {
@@ -15,7 +21,7 @@ Router.map(function() {
 				Meteor.subscribe('currentUser'),
 				Meteor.subscribe('chatt_user_participate', Meteor.userId())
 			]
-		}
+		},
 	});
 
 	this.route('chatt', {
@@ -34,7 +40,7 @@ Router.map(function() {
 		},
 
 		before : function() {
-            var chattId = Chatt.findOne({ chatt : this.params.chatt })._id;
+			var chattId = Chatt.findOne({ chatt : this.params.chatt })._id;
 
 			Meteor.subscribe('chatt_dialogs', chattId);
 			Meteor.subscribe('notification', chattId);
@@ -86,7 +92,7 @@ Router.map(function() {
 		},
 
 		before : function() {
-            Session.set('current_chatt', this.params._id);
+			Session.set('current_chatt', this.params._id);
 		}
 	});
 
@@ -103,5 +109,19 @@ Router.configure({
 
 	yieldTemplates: {
 //    	'footer': { to: 'footer' },
-  	},
+	},
+
+	before: function() {
+		var routeName = this.route.name;
+
+		// no need to check at these URLs
+		if (_.include(['chatt'], routeName))
+			return;
+
+		var user = Meteor.user();
+		if (!user) {
+			this.render(Meteor.loggingIn() ? this.loadingTemplate : 'home');
+			return this.stop();
+		}
+	}
 });
