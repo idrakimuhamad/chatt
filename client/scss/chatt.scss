@@ -494,13 +494,16 @@ body {
 			}
 			.chatt-input-text {
 				#chatt-entry {
-					@include box-shadow(none);
-					border: 0;
-					padding: 0;
 					margin: 0;
-					line-height: 1.4em;
-					width: 100%;
-					resize: none;
+					textarea {
+						@include box-shadow(none);
+						border: 0;
+						padding: 0;
+						margin: 0;
+						line-height: 1.4em;
+						width: 100%;
+						resize: none;
+					}
 				}
 			}
 		}

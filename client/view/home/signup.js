@@ -34,10 +34,10 @@ Template.signup.events({
 		};
 
 		Meteor.call('createAccount', options, function (error, result) {
+			Session.set('creating_user', false);
 			if(!error) {
 				Meteor.loginWithPassword(options.username, options.password, function(err, res) {
 					var user = Meteor.user().username;
-					Session.set('creating_user', false);
 	            	Router.go('dashboard', { username : user });
 				});
 
@@ -54,8 +54,8 @@ Template.signup.events({
 		Meteor.loginWithFacebook({
 			requestPermissions : ['email']
 		}, function(err, res) {
+			Session.set('signin_with_facebook', false);
 			if(!err) {
-				Session.set('signin_with_facebook', false);
 				var user = Meteor.user().username;
 				Router.go('dashboard', { username : user });
 			}

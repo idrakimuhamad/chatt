@@ -26,16 +26,7 @@ Meteor.methods({
 
 		dialog._id = Dialogs.insert(dialog);
 
-		// Instead of updating the last person on chatt,
-		// we just filter the notification which wasn't
-		// made by the current chatter
-		// Chatt.update({_id : dialogOptions.chattId}, {
-		// 	$set : {
-		// 		lastChatter : dialogOptions.chatterId
-		// 	}
-		// });
-
-		createChattNotification(dialog);
+		// createChattNotification(dialog);
 
 		return dialog._id;
 	}

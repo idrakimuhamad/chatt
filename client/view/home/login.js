@@ -29,8 +29,8 @@ Template.login.events({
 		Meteor.loginWithFacebook({
 			requestPermissions : ['email']
 		}, function(err, res) {
+			Session.set('login_with_facebook', false);
 			if(!err) {
-				Session.set('login_with_facebook', false);
 				var user = Meteor.user().username;
 				Router.go('dashboard', { username : user });
 			}

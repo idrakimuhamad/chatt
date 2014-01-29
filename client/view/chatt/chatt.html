@@ -5,12 +5,8 @@
 	        	<header class="chatt-title"><h3>{{title}}</h3></header>
 	        	<div class="chatt-content">
 	        		<ul id="dialogs">
-	        			{{#each cloud}}
-	        			<li class="cloud">
-	        				{{#each dialog}}
-	        				<div class="dialog"></div>
-	        				{{/each}}
-	        			</li>
+	        			{{#each dialog}}
+	        			{{> dialog_cloud}}
 	        			{{/each}}
 	        		</ul>
 	        	</div>
@@ -18,4 +14,14 @@
 	    </div>
 	</div>
 	{{> chatt_input}}
+</template>
+
+<template name="dialog_cloud">
+	{{#isolate}}
+	{{#if not_the_same}}
+	<li class="dialogs" data-chatter="{{chatterId}}">{{dialog}}</li>
+	{{else}}
+	<li class="dialogs" data-chatter="{{chatterId}}">The same - {{dialog}}</li>
+	{{/if}}
+	{{/isolate}}
 </template>

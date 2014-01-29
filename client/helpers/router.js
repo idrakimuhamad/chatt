@@ -5,11 +5,11 @@ Router.map(function() {
 		path: '/',
 		loadingTemplate: 'loading',
 
-		// before : function() {
-		// 	if (Meteor.user()) {
-		// 		Router.go('dashboard', { username : Meteor.user().username });
-		// 	}
-		// }
+		before : function() {
+			// if (Meteor.user()) {
+			// 	Router.go('dashboard', { username : Meteor.user().username });
+			// }
+		}
 	});
 
 	this.route('dashboard', {
@@ -28,6 +28,16 @@ Router.map(function() {
 				Meteor.subscribe('chatt_user_participate', Meteor.userId())
 			]
 		},
+
+		before : function() {
+			if (Meteor.user().username != this.params.username) {
+				Meteor.logout(function() {
+					Router.go('home');
+				});
+			} else if(!Meteor.user()) {
+				Router.go('home');
+			}
+		}
 	});
 
 	this.route('chatt', {
@@ -47,8 +57,10 @@ Router.map(function() {
 			];
 		},
 
-		before : function() {			
+		before : function() {
 			Session.set('current_chatt', this.params._id);
+			Session.set('chatter', Meteor.user().username);
+			Session.set('chatterId', Meteor.userId());
 		}
 	});
 
@@ -64,6 +76,12 @@ Router.map(function() {
 			return [
 				Meteor.subscribe('currentUser')
 			]
+		},
+
+		before : function() {
+			if (!Meteor.user()) {
+				Router.go('home');
+			}
 		}
 	});
 
@@ -79,6 +97,12 @@ Router.map(function() {
 			return [
 				Meteor.subscribe('currentUser')
 			]
+		},
+
+		before : function() {
+			if (!Meteor.user()) {
+				Router.go('home');
+			}
 		}
 	});
 
@@ -113,19 +137,5 @@ Router.configure({
 
 	yieldTemplates: {
 //    	'footer': { to: 'footer' },
-	},
-
-	before: function() {
-		var routeName = this.route.name;
-
-		// no need to check at these URLs
-		if (_.include(['chatt'], routeName))
-			return;
-
-		var user = Meteor.user();
-		if (!user) {
-			this.render(Meteor.loggingIn() ? this.loadingTemplate : 'home');
-			return this.stop();
-		}
 	}
 });

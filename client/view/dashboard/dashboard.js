@@ -28,9 +28,6 @@ Template.dashboard.helpers({
 	chatt_name : function() {
 		return this.chatt;
 	},
-	chatt_url : function() {
-		// return this;
-	},
 	last_chat : function() {
 		if(this.lastMessage) {
 			return this.lastMessage;
@@ -68,5 +65,11 @@ Template.dashboard.events({
 
 			}
 		}
+	},
+	'click .logout' : function(e,t) {
+		e.preventDefault();
+		Meteor.logout(function() {
+			Router.go('home');
+		});
 	}
 });
