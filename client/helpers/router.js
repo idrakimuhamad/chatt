@@ -18,7 +18,7 @@ Router.map(function() {
 
 		data : function() {
 			return [
-			Chatt.find({ "chatters.chatter": Meteor.userId() })
+			Chatt.find({ "chatters": Meteor.userId() })
 			];
 		},
 
@@ -29,7 +29,7 @@ Router.map(function() {
 			]
 		},
 
-		before : function() {
+		after : function() {
 			if (Meteor.user().username != this.params.username) {
 				Meteor.logout(function() {
 					Router.go('home');
@@ -53,11 +53,12 @@ Router.map(function() {
 			return [
 			Meteor.subscribe('selected_chatt', this.params._id),
 			Meteor.subscribe('chatt_dialogs', this.params._id),
+			Meteor.subscribe('user_in_chatt'),
 			Meteor.subscribe('notification', this.params._id)
 			];
 		},
 
-		before : function() {
+		after : function() {
 			Session.set('current_chatt', this.params._id);
 			Session.set('chatter', Meteor.user().username);
 			Session.set('chatterId', Meteor.userId());
@@ -78,7 +79,7 @@ Router.map(function() {
 			]
 		},
 
-		before : function() {
+		after : function() {
 			if (!Meteor.user()) {
 				Router.go('home');
 			}
@@ -99,7 +100,7 @@ Router.map(function() {
 			]
 		},
 
-		before : function() {
+		after : function() {
 			if (!Meteor.user()) {
 				Router.go('home');
 			}

@@ -149,31 +149,41 @@ body {
 }
 
 #wrapper {
+	.back-to-dashboard {
+		position: fixed;
+		top: 0;
+		left: 0.5em;
+		a {
+			color: $darkGray;
+			&:hover {
+				color : lighten($darkGray, 10%);
+			}
+		}
+	}
 	.home-container {
 		margin: 0 auto;
 		display: block;
 		float: none;
 		width: 20em;
-		.home-logo {
-			text-align: center;
-			position: relative;
-			.logo {
-				position: absolute;
-				top: 1em;
-				width: 100%;
-				margin: 0;
-				a {
-					font-family: 'Montserrat', Verdana, sans-serif;
-					svg {
-						width: 100px;
-						height: 100px;
-					}
-				}
-			}
-		}
 
 		.home-body {
 			@include vertical-align;
+
+			.home-logo {
+				text-align: center;
+				position: relative;
+				.logo {
+					width: 100%;
+					margin: 0;
+					a {
+						font-family: 'Montserrat', Verdana, sans-serif;
+						svg {
+							width: 100px;
+							height: 100px;
+						}
+					}
+				}
+			}
 
 			#authenticate {
 				text-align: center;
@@ -459,15 +469,80 @@ body {
 		min-width: 25em;
 		margin: 0 auto;
 		float: none;
-		max-width: 30em;
-		border: 1px solid rgba(0,0,0, .15);
-		border-bottom: 0;
-		border-top: 0;
+		max-width: 40em;
 		padding: 0 1em;
 		position: relative;
+		border: 1px solid rgba(0,0,0, .15);
+		border-top: 0;
+		border-bottom: 0;
 		.chatt-title {
 			margin: 0;
 			padding: 1em 0;
+		}
+		.chatt-content {
+			padding-bottom: 10em;
+			font-size: .8em;
+			#dialogs {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				.dialog {
+					padding: 1em 0 0;
+
+					&:first-child {
+						padding-top: 0;
+					}
+
+					&.different-from-above {
+						&+.same-with-above {
+							padding-top: 0;
+						}
+					}
+
+					&.same-with-above {
+						padding-left: 2.5em;
+						&+.same-with-above {
+							padding-top: 0;
+						}
+					}
+
+					.avatar-container {
+						cursor: pointer;
+						position: relative;
+						img {
+							width: 1.85em;
+							@include border-radius(3em);
+
+							&.own-by-me {
+								@include box-shadow(0 0 0 2px $lightGreen);
+							}
+						}
+						.avatar-circle {
+							display: block;
+							text-align: center;
+							border: 1px solid rgba(0,0,0, .15);;
+							font-size: .8em;
+							width: 2.3em;
+							height: 2.3em;
+							@include border-radius(3em);
+							@include transition(box-shadow .25s);
+							&.own-by-me {
+								border: 0;
+								@include box-shadow(0 0 0 2px $lightGreen);
+							}
+						}
+
+						&:hover {
+							.avatar-circle {
+								@include box-shadow(0 1px 1px rgba(0,0,0, .15));
+							}
+						}
+					}
+					.dialog-content {
+						padding-left: .5em;
+					}
+				}
+			}
 		}
 	}
 
@@ -490,6 +565,20 @@ body {
 				cursor: pointer;
 				img {
 					@include border-radius(3em);
+				}
+				.avatar-circle {
+					display: block;
+					text-align: center;
+					border: 1px solid rgba(0,0,0, .15);
+					padding: .5em .5em .8em;
+					@include border-radius(3em);
+					@include transition(box-shadow .25s);
+				}
+
+				&:hover {
+					.avatar-circle {
+						@include box-shadow(0 1px 1px rgba(0,0,0, .15));
+					}
 				}
 			}
 			.chatt-input-text {

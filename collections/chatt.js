@@ -31,9 +31,7 @@ Meteor.methods({
 			var chatt = {
 				chatt : chat.name,
 				createdBy : chat.userId,
-				chatters : {
-					chatter : chat.userId
-				},
+				chatters : [ chat.userId ],
 				created : moment().valueOf()
 			};
 			return Chatt.insert(chatt);

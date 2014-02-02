@@ -125,16 +125,16 @@ Template.chatt_page.events({
     }
 });
 
-window.onunload = function(e) {
-    var newNotification = Notify.find({ chattId : Session.get('current_chatt') }, { limit : 1, sort : { timestamps : -1 }}).fetch(),
-        notifyId = newNotification[0]._id;
+// window.onunload = function(e) {
+//     var newNotification = Notify.find({ chattId : Session.get('current_chatt') }, { limit : 1, sort : { timestamps : -1 }}).fetch(),
+//         notifyId = newNotification[0]._id;
 
-    Meteor.call('notify', notifyId, function (error, result) {
-        if(!error) {
+//     Meteor.call('notify', notifyId, function (error, result) {
+//         if(!error) {
 
-        }
-    });
-}
+//         }
+//     });
+// }
 
 function createDialog(template) {
     var dialog = template.find('.chatt-input').value;

@@ -1,7 +1,10 @@
 Session.setDefault('creating_chatt', false);
 
 Template.dashboard.rendered = function () {
-	setTitle('Dashboard');
+	if(!this.rendered) {
+		this.rendered = true;
+		Session.set('document-title', 'Dashboard');
+	}
 };
 
 Template.dashboard.helpers({

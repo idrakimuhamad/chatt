@@ -1,9 +1,17 @@
 Session.setDefault('last_chatter_dialog', null);
 
-var lastChatter = null;
+var lastChatterClass = null,
+	lastChatter = null,
+	lastDialogClass = null,
+	lastDialog = null;
 
 Template.chatt.rendered = function () {
-	setTitle(Chatt.find({}).fetch()[0].chatt);
+	if(!this.rendered) {
+		this.rendered = true;
+		Session.set('document-title', Chatt.find({}).fetch()[0].chatt);
+	}
+	$(window).scrollTop($(document).height());
+	$('#chatt-entry textarea').focus();
 };
 
 Template.chatt.helpers({
@@ -11,37 +19,80 @@ Template.chatt.helpers({
 		return Chatt.find({}).fetch()[0].chatt;
 	},
 	dialog : function() {
-		return Dialogs.find();
-	}
-	// dialog_cloud : function() {
-	// 	if(lastChatter !== this.chatterId || !lastChatter ) {
-	// 		lastChatter = this.chatterId;
-
-	// 		var dialogContainer = '<li class="dialog" data-chatter="' + this.chatterId + '"><p>' + this.dialog + '</p></li>';
-
-	// 		return dialogContainer;
-	// 	} else {
-	// 		$('#dialogs').append('<p>' + this.dialog + '</p>');
-
-	// 		// console.log(this.dialog + ' - same dialog');
-	// 		// $('#dialogs').find('[data-chatter="' + this.chatterId + '"]').last().append('<p>' + this.dialog + '</p>');
-	// 	}
-	// }
-	// dialog_content : function() {
-
-
-	// 	return this.dialog;
-	// }
-});
-
-Template.dialog_cloud.helpers({
-	not_the_same : function() {
-		if(lastChatter !== this.chatterId) {
-			lastChatter = this.chatterId;
-			return true;
+		var dialogs = Dialogs.find({}, { sort : { timestamp : -1}, limit : 30 }).fetch();
+		return dialogs.sort(compare);
+	},
+	person : function() {
+		if(lastChatterClass !== this.chatterId && lastDialogClass !== this._id || lastChatterClass === null ) {
+			lastChatterClass = this.chatterId;
+			lastDialogClass = this._id;
+			return 'different-from-above';
+		} else if(lastChatterClass === this.chatterId && lastDialogClass !== this._id){
+			return 'same-with-above';
 		} else {
-			$('#dialogs').find('[data-chatter="' + this.chatterId + '"]').last().append('<p>' + this.dialog + '</p>');
-			return false;
+			return 'different-from-above';
 		}
+	},
+	same_person : function() {
+		if(lastChatter !== this.chatterId && lastDialog !== this._id || lastChatter === null ) {
+			lastChatter = this.chatterId;
+			lastDialog = this._id;
+			return false;
+		} else if(lastChatter === this.chatterId && lastDialog !== this._id){
+			return true;
+		}
+	},
+	dialog_body : function() {
+		return this.dialog;
 	}
 });
+
+Template.avatar.helpers({
+	avatar : function() {
+		var user = Meteor.users.findOne(this.chatterId);
+
+		if(user) {
+			if(user.profile && user.profile.avatar) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	},
+	avatar_url : function() {
+		var user = Meteor.users.findOne(this.chatterId);
+
+		if(user) {
+			if(user.profile) {
+				var avatar = user.profile.avatar;
+				return avatar;
+			} else {
+				return false;
+			}
+		}
+	},
+	first_letter : function() {
+		var user = Meteor.users.findOne(this.chatterId);
+
+		if(user) {
+			var username = user.username;
+			return username.charAt(0);
+		}
+	},
+	chatter_name : function() {
+		var user = Meteor.users.findOne(this.chatterId);
+
+		if(user) {
+			var username = user.username;
+			return username;
+		}
+	},
+	current_chatter : function() {
+		return this.chatterId === Meteor.userId() ? 'own-by-me' : '';
+	}
+});
+
+Template.back_to_dashboard.username = function() {
+	return Meteor.user().username;
+}
+

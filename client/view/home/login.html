@@ -1,5 +1,15 @@
 <template name="login">
 	<div class="login">
+		{{#if login_user}}
+		<div class="loading">
+			Logging in...
+		</div>
+		{{else}}
+		{{#if login_with_facebook}}
+		<div class="loading">
+			Doing some brilliant stuff with your Facebook.
+		</div>
+		{{else}}
 		<div id="log-with-facebook">
 			<a class="facebook-button"><i class="icon">7</i>Sign In With Facebook</a>
 		</div>
@@ -15,5 +25,7 @@
 				<button class="btn btn-block login-button" type="submit">Login</button>
 			</div>
 		</form>
+		{{/if}}
+		{{/if}}
 	</div>
 </template>

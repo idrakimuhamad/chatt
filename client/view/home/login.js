@@ -1,17 +1,21 @@
 
 Session.setDefault('login_with_facebook', false);
+Session.setDefault('loggin_user', false);
 
 Template.login.helpers({
-	// creating_user : function() {
-	// 	return Session.get('creating_user');
-	// },
+	login_user : function() {
+		return Session.get('loggin_user');
+	},
 	login_with_facebook : function() {
 		return Session.get('login_with_facebook');
 	}
 });
 
 Template.login.rendered = function () {
-	setTitle('Log In');
+	if(!this.rendered) {
+		this.rendered = true;
+		Session.set('document-title', 'login');
+	}
 };
 
 Template.login.events({
@@ -20,6 +24,22 @@ Template.login.events({
 	},
 	'blur .form-control' : function(e,t) {
 		$(e.currentTarget).parent('.form-group').removeClass('focus');
+	},
+	'submit .form' : function(e,t) {
+		e.preventDefault();
+
+		var email = t.find('.email').value,
+			password = t.find('.password').value;
+
+		Session.set('loggin_user', true);
+
+		Meteor.loginWithPassword(email, password, function(err, res) {
+			Session.set('loggin_user', false);
+			if(!err) {
+				var user = Meteor.user().username;
+        		Router.go('dashboard', { username : user });
+			}
+		});
 	},
 	'click #log-with-facebook .facebook-button' : function(e,t) {
 		e.preventDefault();

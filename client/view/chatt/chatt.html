@@ -1,12 +1,22 @@
 <template name="chatt">
+	{{> back_to_dashboard}}
 	<div class="container-fluid full-height">
 	    <div class="row-fluid full-height">
-	        <div class="chatt-container span4 full-height">
-	        	<header class="chatt-title"><h3>{{title}}</h3></header>
+	        <div class="chatt-container span4">
+	        	<header class="chatt-title">
+	        		<h3>{{title}}</h3>
+	        	</header>
 	        	<div class="chatt-content">
-	        		<ul id="dialogs">
+	        		<ul id="dialogs" class="container-fluid">
 	        			{{#each dialog}}
-	        			{{> dialog_cloud}}
+	        				<li class="dialog {{person}} row-fluid" data-chatter="{{chatterId}}">
+	        					{{#unless same_person}}
+	        					{{> avatar}}
+	        					{{/unless}}
+	        					<div class="dialog-content span11">
+	        						{{{dialog_body}}}
+	        					</div>
+	        				</li>
 	        			{{/each}}
 	        		</ul>
 	        	</div>
@@ -16,12 +26,18 @@
 	{{> chatt_input}}
 </template>
 
-<template name="dialog_cloud">
-	{{#isolate}}
-	{{#if not_the_same}}
-	<li class="dialogs" data-chatter="{{chatterId}}">{{dialog}}</li>
+<template name="avatar">
+	<div class="avatar-container span1" title="{{chatter_name}}">
+	{{#if avatar}}
+		<img src="{{avatar_url}}" class="{{current_chatter}}" alt="Profile Picture">
 	{{else}}
-	<li class="dialogs" data-chatter="{{chatterId}}">The same - {{dialog}}</li>
+		<span class="avatar-circle {{current_chatter}}">{{first_letter}}</span>
 	{{/if}}
-	{{/isolate}}
+	</div>
+</template>
+
+<template name="back_to_dashboard">
+	<div class="back-to-dashboard">
+		<a href="/dashboard/{{username}}" title="Back to Dashboard"><i class="icon">k</i></a>
+	</div>
 </template>

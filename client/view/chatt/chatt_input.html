@@ -5,13 +5,13 @@
 				<div class="container-fluid">
 					<div class="row-fluid">
 						<div class="avatar-container span2">
+						{{#isolate}}
 						{{#if avatar_url}}
 							<img src="{{avatar_url}}" alt="Profile Picture">
 						{{else}}
-							<span class="avatar-circle">
-								<i class="icon">h</i>
-							</span>
+							<span class="avatar-circle">{{first_letter}}</span>
 						{{/if}}
+						{{/isolate}}
 						</div>
 						<div class="chatt-input-text span10">
 							<form id="chatt-entry">

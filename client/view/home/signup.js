@@ -2,7 +2,10 @@ Session.setDefault('creating_user', false);
 Session.setDefault('signin_with_facebook', false);
 
 Template.signup.rendered = function () {
-	setTitle('Sign Up');
+	if(!this.rendered) {
+		this.rendered = true;
+		Session.set('document-title', 'Sign Up');
+	}
 };
 
 Template.signup.helpers({
