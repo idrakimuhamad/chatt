@@ -7,23 +7,12 @@ Template.dashboard.rendered = function () {
 	}
 };
 
-Template.dashboard.helpers({
-	username : function() {
-		return Meteor.user().username;
-	},
+Template.dashboard.helpers({	
 	no_chat : function() {
 		return Chatt.find({}).count() > 0 ? false : true;
 	},
 	creating_chatt : function() {
 		return Session.get('creating_chatt');
-	},
-	avatar_url : function() {
-		var userProfile = Meteor.user().profile;
-
-		if(userProfile) {
-			var avatar = userProfile.avatar;
-			return avatar;
-		}
 	},
 	chatt : function() {
 		return Chatt.find({});
@@ -68,11 +57,5 @@ Template.dashboard.events({
 
 			}
 		}
-	},
-	'click .logout' : function(e,t) {
-		e.preventDefault();
-		Meteor.logout(function() {
-			Router.go('home');
-		});
 	}
 });

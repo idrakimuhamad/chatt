@@ -40,33 +40,6 @@ Router.map(function() {
 		}
 	});
 
-	this.route('chatt', {
-		path: '/:_id',
-
-		data : function() {
-			return [
-			Chatt.findOne({ _id : this.params._id })
-			];
-		},
-
-		waitOn: function () {
-			return [
-			Meteor.subscribe('selected_chatt', this.params._id),
-			Meteor.subscribe('chatt_dialogs', this.params._id),
-			Meteor.subscribe('user_in_chatt'),
-			Meteor.subscribe('notification', this.params._id)
-			];
-		},
-
-		after : function() {
-			Session.set('current_chatt', this.params._id);
-			if(Meteor.user()) {
-				Session.set('chatter', Meteor.user().username);
-				Session.set('chatterId', Meteor.userId());
-			}
-		}
-	});
-
 	this.route('profile', {
 		path: '/profile',
 		loadingTemplate: 'loading',
@@ -107,6 +80,33 @@ Router.map(function() {
 		after : function() {
 			if (!Meteor.user()) {
 				Router.go('home');
+			}
+		}
+	});
+
+	this.route('chatt', {
+		path: '/:_id',
+
+		data : function() {
+			return [
+			Chatt.findOne({ _id : this.params._id })
+			];
+		},
+
+		waitOn: function () {
+			return [
+			Meteor.subscribe('selected_chatt', this.params._id),
+			Meteor.subscribe('chatt_dialogs', this.params._id),
+			Meteor.subscribe('user_in_chatt'),
+			Meteor.subscribe('notification', this.params._id)
+			];
+		},
+
+		after : function() {
+			Session.set('current_chatt', this.params._id);
+			if(Meteor.user()) {
+				Session.set('chatter', Meteor.user().username);
+				Session.set('chatterId', Meteor.userId());
 			}
 		}
 	});

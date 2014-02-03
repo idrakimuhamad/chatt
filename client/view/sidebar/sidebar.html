@@ -1,0 +1,21 @@
+<template name="sidebar">
+	<aside class="sidebar full-height span2">
+		<header class="avatar">
+		{{#if avatar_url}}
+			<img src="{{avatar_url}}" alt="Profile Picture">
+		{{else}}
+			<span class="avatar-circle">
+				<i class="icon">h</i>
+			</span>
+		{{/if}}
+		<h4>{{username}}</h4>
+		</header>
+		<nav class="nav-dashboard">
+			<ul>
+				<li><a href="{{pathFor 'profile'}}" class="to-profile"><i class="icon">k</i>Profile</a></li>
+				<li><a href="{{pathFor 'settings'}}" class="to-settings"><i class="icon">D</i>Settings</a></li>
+				<li><a class="logout"><i class="icon">G</i>Logout</a></li>
+			</ul>
+		</nav>
+	</aside>
+</template>
