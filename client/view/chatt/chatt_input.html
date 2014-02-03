@@ -4,13 +4,13 @@
 			<div class="input-content span4">
 				<div class="container-fluid">
 					<div class="row-fluid">
+						{{#if anon_user_signup}}
+						<input type="text" class="anon-name" placeholder="Your Name">
+						{{else}}
+						{{#if is_anon_user}}
 						<div class="avatar-container span2">
 						{{#isolate}}
-						{{#if avatar_url}}
-							<img src="{{avatar_url}}" alt="Profile Picture">
-						{{else}}
-							<span class="avatar-circle">{{first_letter}}</span>
-						{{/if}}
+							<span class="avatar-circle" title="{{name}}">{{first_letter}}</span>
 						{{/isolate}}
 						</div>
 						<div class="chatt-input-text span10">
@@ -19,6 +19,30 @@
 								<button type="submit" class="hidden"></button>
 							</form>
 						</div>
+						{{else}}
+						{{#if got_account}}
+						<div class="avatar-container span2">
+						{{#isolate}}
+							{{#if avatar_url}}
+							<img src="{{avatar_url}}" alt="Profile Picture" title="{{name}}">
+							{{else}}
+							<span class="avatar-circle" title="{{name}}">{{first_letter}}</span>
+							{{/if}}
+						{{/isolate}}
+						</div>
+						<div class="chatt-input-text span10">
+							<form id="chatt-entry">
+								<textarea rows="3" placeholder="Type and Enter"></textarea>
+								<button type="submit" class="hidden"></button>
+							</form>
+						</div>
+						{{else}}
+						<div class="chatt-register">
+							<p><a href="/">Sign Up</a> now to join the conversation or join <a class="anonymous">just this time only.</a></p>							
+						</div>
+						{{/if}}
+						{{/if}}
+						{{/if}}
 					</div>
 				</div>
 			</div>

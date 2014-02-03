@@ -1,5 +1,7 @@
 <template name="chatt">
+	{{#unless anon_user}}
 	{{> back_to_dashboard}}
+	{{/unless}}
 	<div class="container-fluid full-height">
 	    <div class="row-fluid full-height">
 	        <div class="chatt-container span4">

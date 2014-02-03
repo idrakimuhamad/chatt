@@ -1,12 +1,6 @@
 
 @import "./fontello.css";
 
-// Compass
-@import "compass/css3/border-radius";
-@import "compass/css3/box-shadow";
-@import "compass/css3/transition";
-@import "compass/css3/transform";
-
 /**
 	Font face
 **/
@@ -104,7 +98,7 @@ $facebook : #3C599B;
 @mixin vertical-align {
 	position: relative;
 	top: 50%;
-	@include transform(translateY(-50%));
+	transform : translateY(-50%);
 }
 
 /****************************/
@@ -114,7 +108,7 @@ $facebook : #3C599B;
 
 a {
 	color: $lightBlue;
-	@include transition(color .25s);
+	transition : color .25s;
 	&:hover {
 		color: darken($lightBlue, 10%);
 		text-decoration: none;
@@ -211,8 +205,8 @@ body {
 						color: white;
 						display: block;
 						cursor: pointer;
-						@include transition(background .25s linear);
-						@include border-radius(3px);
+						transition : background .25s linear;
+						border-radius : 3px;
 
 						.icon {
 							margin-right: 1em;
@@ -238,7 +232,7 @@ body {
 								width: 10%;
 								border-top: 1px solid $white;
 								border-bottom: 1px solid rgba(0,0,0, .1);
-								@include transition(width .3s, margin .3s);
+								transition : width .3s, margin .3s;
 							}
 
 							&.focus {
@@ -267,9 +261,9 @@ body {
 								border: 1px solid rgba(0,0,0, .1);
 								text-shadow: none;
 								color: $white;
-								@include border-radius(3px);
-								@include box-shadow(none);
-								@include transition(background .25s);
+								border-radius : 3px;
+								box-shadow : none;
+								transition : background .25s;
 
 								&:hover {
 									background: lighten($lightBlue, 5%);
@@ -285,7 +279,7 @@ body {
 							text-align: center;
 							border: 0;
 							margin: 0;
-							@include box-shadow(none);
+							box-shadow : none;
 						}
 					}
 				}
@@ -293,7 +287,6 @@ body {
 
 			.signup-page {
 				.separator {
-					font-family: georgia;
 					display: block;
 					padding: .5em 0;
 					position: relative;
@@ -355,8 +348,8 @@ body {
 				img {
 					width: 50px;
 					height: auto;
-					@include box-shadow(0 1px 1px rgba(0,0,0, .15));
-					@include border-radius(3em);
+					box-shadow : 0 1px 1px rgba(0,0,0, .15);
+					border-radius : 3em;
 				}
 				.avatar-circle {
 					display: block;
@@ -426,9 +419,9 @@ body {
 						margin: 0;
 						border: 0;
 						border-bottom: 1px solid rgba(0,0,0, .15);
-						@include box-shadow(none);
-						@include border-radius(0);
-						@include transition(all .25s);
+						box-shadow : none;
+						border-radius : 0;
+						transition : all .25s;
 						outline: 0;
 
 						&:focus {
@@ -511,10 +504,10 @@ body {
 						position: relative;
 						img {
 							width: 1.85em;
-							@include border-radius(3em);
+							border-radius : 3em;
 
 							&.own-by-me {
-								@include box-shadow(0 0 0 2px $lightGreen);
+								box-shadow : 0 0 0 2px $lightGreen;
 							}
 						}
 						.avatar-circle {
@@ -524,17 +517,17 @@ body {
 							font-size: .8em;
 							width: 2.3em;
 							height: 2.3em;
-							@include border-radius(3em);
-							@include transition(box-shadow .25s);
+							border-radius : 3em;
+							transition : box-shadow .25s;
 							&.own-by-me {
 								border: 0;
-								@include box-shadow(0 0 0 2px $lightGreen);
+								box-shadow : 0 0 0 2px $lightGreen;
 							}
 						}
 
 						&:hover {
 							.avatar-circle {
-								@include box-shadow(0 1px 1px rgba(0,0,0, .15));
+								box-shadow : 0 1px 1px rgba(0,0,0, .15);
 							}
 						}
 					}
@@ -561,23 +554,41 @@ body {
 			background: $white;
 			padding: .5em 0;
 			border: 1px solid rgba(0,0,0, .15);
+
+			.chatt-register {
+				font-size: .8em;
+				.anonymous {
+					cursor: pointer;
+				}
+			}
+
+			.anon-name {
+				border: 0;
+				box-shadow: none;
+				padding: 0;
+				margin: 0;
+				line-height: 2;
+				height: auto;
+				width: 100%;
+			}
+
 			.avatar-container {
 				cursor: pointer;
 				img {
-					@include border-radius(3em);
+					border-radius : 3em;
 				}
 				.avatar-circle {
 					display: block;
 					text-align: center;
 					border: 1px solid rgba(0,0,0, .15);
 					padding: .5em .5em .8em;
-					@include border-radius(3em);
-					@include transition(box-shadow .25s);
+					border-radius : 3em;
+					transition : box-shadow .25s;
 				}
 
 				&:hover {
 					.avatar-circle {
-						@include box-shadow(0 1px 1px rgba(0,0,0, .15));
+						box-shadow : 0 1px 1px rgba(0,0,0, .15);
 					}
 				}
 			}
@@ -585,7 +596,7 @@ body {
 				#chatt-entry {
 					margin: 0;
 					textarea {
-						@include box-shadow(none);
+						box-shadow : none;
 						border: 0;
 						padding: 0;
 						margin: 0;
@@ -633,7 +644,7 @@ body {
 
 						position: relative;
 
-						@include transition(background .5s linear);
+						transition : background .5s linear;
 
 						&.unseen {
 							background: $yellow;
@@ -743,9 +754,9 @@ body {
 
 					height: 2em;
 
-					@include box-shadow(none);
+					box-shadow : none;
 
-					@include transition(all .25s linear);
+					transition : all .25s linear;
 
 				}
 
@@ -785,9 +796,9 @@ body {
 
 					height: 2em;
 
-					@include box-shadow(none);
+					box-shadow : none;
 
-					@include transition(all .25s linear);
+					transition : all .25s linear;
 
 				}
 
@@ -805,7 +816,7 @@ body {
 
 						color: $lightBlue;
 						text-shadow: 0 1px 2px rgba(126, 234, 255, 0.35);
-						@include transition(all .25s ease-in-out);
+						transition : all .25s ease-in-out;
 
 					}
 
@@ -813,7 +824,7 @@ body {
 
 						color: $darkGray;
 						text-shadow: 0 0 0 transparent;
-						@include transition(all .25s ease-in-out);
+						transition : all .25s ease-in-out;
 
 					}
 
@@ -879,13 +890,13 @@ body {
 
 	-webkit-backface-visibility: hidden;
 
-	@include transition(all 0.3s !important);
+	transition : all 0.3s !important;
 
 	&.from-top {
 
 		opacity: 0;
 
-		@include transform(translateY(-60%));
+		transform : translateY(-60%);
 
 	}
 
@@ -893,7 +904,7 @@ body {
 
 		opacity: 0;
 
-		@include transform(translateX(-101%));
+		transform : translateX(-101%);
 
 	}
 
@@ -901,19 +912,19 @@ body {
 
 		opacity: 1;
 
-		@include transform(translate3d(0, 0, 0));
+		transform : translate3d(0, 0, 0);
 
 	}
 
 	&.superscale {
 
-		@include transform(scale(2));
+		transform : scale(2);
 
 	}
 
 	&.scale {
 
-		@include transform(scale(1));
+		transform : scale(1);
 
 	}
 

@@ -15,6 +15,9 @@ Template.chatt.rendered = function () {
 };
 
 Template.chatt.helpers({
+	anon_user : function() {
+		return Session.get('anon_user');
+	},
 	title : function() {
 		return Chatt.find({}).fetch()[0].chatt;
 	},
@@ -72,27 +75,20 @@ Template.avatar.helpers({
 		}
 	},
 	first_letter : function() {
-		var user = Meteor.users.findOne(this.chatterId);
-
-		if(user) {
-			var username = user.username;
-			return username.charAt(0);
-		}
+		var username = this.chatter;
+		return username.charAt(0);
 	},
 	chatter_name : function() {
-		var user = Meteor.users.findOne(this.chatterId);
-
-		if(user) {
-			var username = user.username;
-			return username;
-		}
+		var username = this.chatter;
+		return username;
 	},
 	current_chatter : function() {
-		return this.chatterId === Meteor.userId() ? 'own-by-me' : '';
+		return this.chatterId === Session.get('chatterId') ? 'own-by-me' : '';
 	}
 });
 
 Template.back_to_dashboard.username = function() {
-	return Meteor.user().username;
+	if(Meteor.user())
+		return Meteor.user().username;
 }
 

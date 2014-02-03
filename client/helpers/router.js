@@ -6,9 +6,9 @@ Router.map(function() {
 		loadingTemplate: 'loading',
 
 		before : function() {
-			// if (Meteor.user()) {
-			// 	Router.go('dashboard', { username : Meteor.user().username });
-			// }
+			if (Meteor.user()) {
+				Router.go('dashboard', { username : Meteor.user().username });
+			}
 		}
 	});
 
@@ -60,8 +60,10 @@ Router.map(function() {
 
 		after : function() {
 			Session.set('current_chatt', this.params._id);
-			Session.set('chatter', Meteor.user().username);
-			Session.set('chatterId', Meteor.userId());
+			if(Meteor.user()) {
+				Session.set('chatter', Meteor.user().username);
+				Session.set('chatterId', Meteor.userId());
+			}
 		}
 	});
 
@@ -70,7 +72,8 @@ Router.map(function() {
 		loadingTemplate: 'loading',
 
 		data : function() {
-			return Meteor.user();
+			if(Meteor.user())
+				return Meteor.user();
 		},
 
 		waitOn : function() {
@@ -91,7 +94,8 @@ Router.map(function() {
 		loadingTemplate: 'loading',
 
 		data : function() {
-			return Meteor.user();
+			if(Meteor.user())
+				return Meteor.user();
 		},
 
 		waitOn : function() {
