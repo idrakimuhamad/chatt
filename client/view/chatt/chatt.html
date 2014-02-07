@@ -10,6 +10,7 @@
 	        	</header>
 	        	<div class="chatt-content">
 	        		<ul id="dialogs" class="container-fluid">
+	        		{{#isolate}}
 	        			{{#each dialog}}
 	        				<li class="dialog {{person}} row-fluid" data-chatter="{{chatterId}}">
 	        					{{#unless same_person}}
@@ -20,6 +21,7 @@
 	        					</div>
 	        				</li>
 	        			{{/each}}
+	        		{{/isolate}}
 	        		</ul>
 	        	</div>
 	        </div>

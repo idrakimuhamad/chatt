@@ -485,8 +485,8 @@ body {
 
 					&.different-from-above {
 						&+.same-with-above {
-							padding-top: 0;
-							padding-bottom: 1em;
+							padding-top: .5em;
+							padding-bottom: .5em;
 						}
 					}
 
@@ -494,7 +494,7 @@ body {
 						padding-left: 2.5em;
 						&+.same-with-above {
 							padding-top: 0;
-							padding-bottom: 1em;
+							padding-bottom: .5em;
 						}
 					}
 
