@@ -491,8 +491,8 @@ body {
 
 					&.different-from-above {
 						&+.same-with-above {
-							padding-top: 0;
-							padding-bottom: 1em;
+							padding-top: .5em;
+							padding-bottom: .5em;
 						}
 					}
 
