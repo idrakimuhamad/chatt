@@ -1,20 +1,30 @@
 @import url(./fontello.css);
+
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Montserrat:400,700);
+
 /**
 	Font face
 **/
+
 /****************************/
+
 /** 	Variables
 /****************************/
+
 /****************************/
+
 /**		Mixin
 /***************************/
+
 /****************************/
+
 /**		Utilities
 /***************************/
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -38,18 +48,24 @@
 }
 
 /****************************/
+
 /**		Layout
 /***************************/
+
 a {
   color: #2db9ce;
+  -webkit-transition: color .25s;
   transition: color .25s;
 }
+
 a:hover {
   color: #2493a4;
   text-decoration: none;
 }
 
-input, button, textarea {
+input,
+button,
+textarea {
   font-family: 'Source Sans Pro', 'Helvetica-Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -59,7 +75,8 @@ html {
   -ms-text-size-adjust: 100%;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   position: relative;
 }
@@ -82,46 +99,59 @@ body {
   top: 0;
   left: 0.5em;
 }
+
 #wrapper .back-to-dashboard a {
   color: #777777;
 }
+
 #wrapper .back-to-dashboard a:hover {
   color: #919191;
 }
+
 #wrapper .home-container {
   margin: 0 auto;
   display: block;
   float: none;
   width: 20em;
 }
+
 #wrapper .home-container .home-body {
   position: relative;
   top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
 #wrapper .home-container .home-body .home-logo {
   text-align: center;
   position: relative;
 }
+
 #wrapper .home-container .home-body .home-logo .logo {
   width: 100%;
   margin: 0;
 }
+
 #wrapper .home-container .home-body .home-logo .logo a {
   font-family: 'Montserrat', Verdana, sans-serif;
 }
+
 #wrapper .home-container .home-body .home-logo .logo a svg {
   width: 100px;
   height: 100px;
 }
+
 #wrapper .home-container .home-body #authenticate {
   text-align: center;
 }
+
 #wrapper .home-container .home-body #authenticate h2 {
   font-family: 'Montserrat', Verdana, sans-serif;
   margin: 0;
   text-transform: uppercase;
 }
+
 #wrapper .home-container .home-body #authenticate .home-content {
   padding: 1em;
   background: white;
@@ -130,32 +160,44 @@ body {
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
-#wrapper .home-container .home-body #authenticate .home-content .login, #wrapper .home-container .home-body #authenticate .home-content .signup {
+
+#wrapper .home-container .home-body #authenticate .home-content .login,
+#wrapper .home-container .home-body #authenticate .home-content .signup {
   -webkit-font-smoothing: antialiased;
 }
-#wrapper .home-container .home-body #authenticate .home-content #sign-with-facebook > a, #wrapper .home-container .home-body #authenticate .home-content #log-with-facebook > a {
+
+#wrapper .home-container .home-body #authenticate .home-content #sign-with-facebook > a,
+#wrapper .home-container .home-body #authenticate .home-content #log-with-facebook > a {
   background: #3c599b;
   padding: .5em 1em;
   color: white;
   display: block;
   cursor: pointer;
+  -webkit-transition: background .25s linear;
   transition: background .25s linear;
   border-radius: 3px;
 }
-#wrapper .home-container .home-body #authenticate .home-content #sign-with-facebook > a .icon, #wrapper .home-container .home-body #authenticate .home-content #log-with-facebook > a .icon {
+
+#wrapper .home-container .home-body #authenticate .home-content #sign-with-facebook > a .icon,
+#wrapper .home-container .home-body #authenticate .home-content #log-with-facebook > a .icon {
   margin-right: 1em;
 }
-#wrapper .home-container .home-body #authenticate .home-content #sign-with-facebook > a:hover, #wrapper .home-container .home-body #authenticate .home-content #log-with-facebook > a:hover {
+
+#wrapper .home-container .home-body #authenticate .home-content #sign-with-facebook > a:hover,
+#wrapper .home-container .home-body #authenticate .home-content #log-with-facebook > a:hover {
   background: #4364ad;
 }
+
 #wrapper .home-container .home-body #authenticate .home-content .form {
   margin: 0;
 }
+
 #wrapper .home-container .home-body #authenticate .home-content .form .form-group {
   position: relative;
   margin-bottom: 1em;
   padding-bottom: .5em;
 }
+
 #wrapper .home-container .home-body #authenticate .home-content .form .form-group:after {
   content: '';
   position: absolute;
@@ -165,22 +207,28 @@ body {
   width: 10%;
   border-top: 1px solid white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-transition: width .3s, margin .3s;
   transition: width .3s, margin .3s;
 }
+
 #wrapper .home-container .home-body #authenticate .home-content .form .form-group.focus:after {
   left: 0;
   margin: 0;
   width: 100%;
   border-bottom: 1px solid #2db9ce;
 }
+
 #wrapper .home-container .home-body #authenticate .home-content .form .form-group.bottom {
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
 #wrapper .home-container .home-body #authenticate .home-content .form .form-group.bottom:after {
   border: 0;
 }
-#wrapper .home-container .home-body #authenticate .home-content .form .form-group .signup-button, #wrapper .home-container .home-body #authenticate .home-content .form .form-group .login-button {
+
+#wrapper .home-container .home-body #authenticate .home-content .form .form-group .signup-button,
+#wrapper .home-container .home-body #authenticate .home-content .form .form-group .login-button {
   height: auto;
   line-height: 1.9em;
   font-size: 1em;
@@ -191,11 +239,15 @@ body {
   color: white;
   border-radius: 3px;
   box-shadow: none;
+  -webkit-transition: background .25s;
   transition: background .25s;
 }
-#wrapper .home-container .home-body #authenticate .home-content .form .form-group .signup-button:hover, #wrapper .home-container .home-body #authenticate .home-content .form .form-group .login-button:hover {
+
+#wrapper .home-container .home-body #authenticate .home-content .form .form-group .signup-button:hover,
+#wrapper .home-container .home-body #authenticate .home-content .form .form-group .login-button:hover {
   background: #3fc2d5;
 }
+
 #wrapper .home-container .home-body #authenticate .home-content .form .form-control {
   font-family: 'Source Sans Pro', 'Helvetica-Neue', Helvetica, Arial, sans-serif;
   height: auto;
@@ -207,11 +259,13 @@ body {
   margin: 0;
   box-shadow: none;
 }
+
 #wrapper .home-container .home-body .signup-page .separator {
   display: block;
   padding: .5em 0;
   position: relative;
 }
+
 #wrapper .home-container .home-body .signup-page .separator:before {
   content: '';
   width: 40%;
@@ -222,6 +276,7 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   border-top: 1px solid white;
 }
+
 #wrapper .home-container .home-body .signup-page .separator:after {
   content: '';
   width: 40%;
@@ -232,47 +287,57 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   border-top: 1px solid white;
 }
+
 #wrapper .home-container .home-body .signup-page .signup-footer a {
   cursor: pointer;
 }
+
 #wrapper .home-container .home-body .login-page .separator {
   display: block;
   height: 1px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   border-top: 1px solid white;
 }
+
 #wrapper .home-container .home-body .login-page .login-footer a {
   cursor: pointer;
 }
+
 #wrapper .dashboard .sidebar {
   background: #4a5063;
   padding: 1em 0;
   color: #fafafa;
 }
+
 #wrapper .dashboard .sidebar .avatar {
   text-align: center;
   cursor: pointer;
 }
+
 #wrapper .dashboard .sidebar .avatar img {
   width: 50px;
   height: auto;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   border-radius: 3em;
 }
+
 #wrapper .dashboard .sidebar .avatar .avatar-circle {
   display: block;
   font-size: 3em;
   color: #2db9ce;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
+
 #wrapper .dashboard .sidebar .nav-dashboard {
   padding-top: 3em;
 }
+
 #wrapper .dashboard .sidebar .nav-dashboard ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 #wrapper .dashboard .sidebar .nav-dashboard ul li a {
   color: #969cb0;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
@@ -281,29 +346,37 @@ body {
   padding: .5em 1em;
   display: block;
 }
+
 #wrapper .dashboard .sidebar .nav-dashboard ul li a .icon {
   margin-right: .5em;
 }
+
 #wrapper .dashboard .sidebar .nav-dashboard ul li a.logout .icon {
   position: relative;
   left: 2px;
 }
+
 #wrapper .dashboard .sidebar .nav-dashboard ul li a:hover {
   color: #d0d3dc;
 }
+
 #wrapper .dashboard .sidebar .nav-dashboard ul li:last-child a {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
+
 #wrapper .dashboard .dashboard-content .content {
   padding: 1em 1em 1em 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
+
 #wrapper .dashboard .dashboard-content .content h3 {
   margin: 0;
 }
+
 #wrapper .dashboard .dashboard-content .chatt-list {
   padding: 1em 0;
 }
+
 #wrapper .dashboard .dashboard-content .chatt-list .create-chatt .chatt-name {
   padding: 0 0 .5em 0;
   width: 80%;
@@ -316,31 +389,38 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: none;
   border-radius: 0;
+  -webkit-transition: all .25s;
   transition: all .25s;
   outline: 0;
 }
+
 #wrapper .dashboard .dashboard-content .chatt-list .create-chatt .chatt-name:focus {
   border-bottom: 1px solid #2db9ce;
 }
+
 #wrapper .dashboard .dashboard-content .chatt-list .chatts {
   list-style-type: none;
   margin: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 #wrapper .dashboard .dashboard-content .chatt-list .chatts li a {
   display: block;
   position: relative;
   padding: 1em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 #wrapper .dashboard .dashboard-content .chatt-list .chatts li a .last-dialog {
   font-size: .7em;
   position: absolute;
   right: 1em;
 }
+
 #wrapper .dashboard .dashboard-content .chatt-list .chatts li:last-child a {
   border-bottom: 0;
 }
+
 #wrapper .chatt-container {
   min-width: 25em;
   min-height: 100%;
@@ -353,47 +433,59 @@ body {
   border-top: 0;
   border-bottom: 0;
 }
+
 #wrapper .chatt-container .chatt-title {
   margin: 0;
   padding: 1em 0;
 }
+
 #wrapper .chatt-container .chatt-content {
   padding-bottom: 10em;
   font-size: .8em;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog {
   padding: 1em 0 0;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog:first-child {
   padding-top: 0;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog.different-from-above + .same-with-above {
   padding-top: 0;
   padding-bottom: 1em;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog.same-with-above {
   padding-left: 2.5em;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog.same-with-above + .same-with-above {
   padding-top: 0;
   padding-bottom: 1em;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container {
   cursor: pointer;
   position: relative;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container img {
   width: 1.85em;
   border-radius: 3em;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container img.own-by-me {
   box-shadow: 0 0 0 2px #c2d4a0;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container .avatar-circle {
   display: block;
   text-align: center;
@@ -402,18 +494,23 @@ body {
   width: 2.3em;
   height: 2.3em;
   border-radius: 3em;
+  -webkit-transition: box-shadow .25s;
   transition: box-shadow .25s;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container .avatar-circle.own-by-me {
   border: 0;
   box-shadow: 0 0 0 2px #c2d4a0;
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container:hover .avatar-circle {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog .dialog-content {
   padding-left: .5em;
 }
+
 #wrapper .chatt-input {
   position: fixed;
   bottom: 0;
@@ -422,6 +519,7 @@ body {
   float: none;
   padding: 0 1em;
 }
+
 #wrapper .chatt-input .input-content {
   min-width: 25em;
   max-width: 30em;
@@ -431,12 +529,15 @@ body {
   padding: .5em 0;
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
+
 #wrapper .chatt-input .input-content .chatt-register {
   font-size: .8em;
 }
+
 #wrapper .chatt-input .input-content .chatt-register .anonymous {
   cursor: pointer;
 }
+
 #wrapper .chatt-input .input-content .anon-name {
   border: 0;
   box-shadow: none;
@@ -446,26 +547,33 @@ body {
   height: auto;
   width: 100%;
 }
+
 #wrapper .chatt-input .input-content .avatar-container {
   cursor: pointer;
 }
+
 #wrapper .chatt-input .input-content .avatar-container img {
   border-radius: 3em;
 }
+
 #wrapper .chatt-input .input-content .avatar-container .avatar-circle {
   display: block;
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.15);
   padding: .5em .5em .8em;
   border-radius: 3em;
+  -webkit-transition: box-shadow .25s;
   transition: box-shadow .25s;
 }
+
 #wrapper .chatt-input .input-content .avatar-container:hover .avatar-circle {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
+
 #wrapper .chatt-input .input-content .chatt-input-text #chatt-entry {
   margin: 0;
 }
+
 #wrapper .chatt-input .input-content .chatt-input-text #chatt-entry textarea {
   box-shadow: none;
   border: 0;
@@ -475,9 +583,11 @@ body {
   width: 100%;
   resize: none;
 }
+
 #wrapper .app-content {
   position: relative;
 }
+
 #wrapper .app-content .for-ie {
   position: absolute;
   top: 3em;
@@ -485,54 +595,67 @@ body {
   width: 150px;
   font-size: .8em;
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body {
   padding-top: 1em;
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs {
   margin: 0;
   padding: 0 0 10em;
   list-style: none;
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog {
   position: relative;
+  -webkit-transition: background .5s linear;
   transition: background .5s linear;
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog.unseen {
   background: #ffdc00;
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog.guest .dialog-cloud {
   width: 50%;
   border-right: 2px solid rgba(0, 0, 0, 0.15);
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog.mine .dialog-cloud {
   width: 50.25%;
   border-left: 2px solid rgba(0, 0, 0, 0.15);
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .dialog-cloud {
   padding: 1em 0;
   position: relative;
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatter-name {
   position: absolute;
   bottom: 1em;
   font-size: .8em;
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatt-dialog {
   width: 100%;
   display: block;
   padding: 1em;
   background: #2db9ce;
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .dialog .chatt-time {
   position: absolute;
   bottom: 1em;
   font-size: .8em;
 }
+
 #wrapper .app-content .chatt-body-container .chatt-body .chatt-dialogs .new-notification .new-message {
   background: #ffdc00;
   padding: .5em 1em;
   color: rgba(0, 0, 0, 0.35);
 }
+
 #wrapper .app-content .chatt-input-container {
   position: fixed;
   bottom: 0;
@@ -542,10 +665,12 @@ body {
   padding: 1em 0;
   background: #fafafa;
 }
+
 #wrapper .app-content .chatt-input-container .chatt-input-inner .not-connected {
   font-size: 1.2em;
   color: #f56f6c;
 }
+
 #wrapper .app-content .chatt-input-container .chatt-input-inner .add-name {
   background: transparent;
   background: #aaaaaa \9;
@@ -557,11 +682,14 @@ body {
   line-height: 2;
   height: 2em;
   box-shadow: none;
+  -webkit-transition: all .25s linear;
   transition: all .25s linear;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input {
   position: relative;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input .chatt-name {
   position: relative;
   top: 0;
@@ -569,6 +697,7 @@ body {
   line-height: 2;
   margin-right: 2em;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input .chatt-input {
   background: transparent;
   background: #aaaaaa \9;
@@ -578,39 +707,50 @@ body {
   width: 80%;
   height: 2em;
   box-shadow: none;
+  -webkit-transition: all .25s linear;
   transition: all .25s linear;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input .toggle-text {
   position: absolute;
   right: 0;
   line-height: 2;
   cursor: pointer;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input .toggle-text.upper {
   color: #2db9ce;
   text-shadow: 0 1px 2px rgba(126, 234, 255, 0.35);
+  -webkit-transition: all .25s ease-in-out;
   transition: all .25s ease-in-out;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input .toggle-text.lower {
   color: #777777;
   text-shadow: 0 0 0 transparent;
+  -webkit-transition: all .25s ease-in-out;
   transition: all .25s ease-in-out;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input .toggle-text .first-text {
   font-size: .8em;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input .toggle-text .second-text {
   font-size: 1.2em;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input .notification-switch {
   cursor: pointer;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input.focus .chatt-input {
   line-height: 2;
   font-size: 2em;
   height: 2em;
   padding: 0;
 }
+
 #wrapper .app-content .chatt-input-container #chatt-input.focus.large .chatt-input {
   font-size: 1em;
   padding: 0;
@@ -618,26 +758,43 @@ body {
 
 .transition {
   -webkit-backface-visibility: hidden;
+  -webkit-transition: all 0.3s !important;
   transition: all 0.3s !important;
 }
+
 .transition.from-top {
   opacity: 0;
+  -webkit-transform: translateY(-60%);
+  -ms-transform: translateY(-60%);
   transform: translateY(-60%);
 }
+
 .transition.from-left {
   opacity: 0;
+  -webkit-transform: translateX(-101%);
+  -ms-transform: translateX(-101%);
   transform: translateX(-101%);
 }
+
 .transition.center {
   opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
+
 .transition.superscale {
+  -webkit-transform: scale(2);
+  -ms-transform: scale(2);
   transform: scale(2);
 }
+
 .transition.scale {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
   transform: scale(1);
 }
+
 .transition.removing {
   background: #f56f6c !important;
   color: #fafafa;
