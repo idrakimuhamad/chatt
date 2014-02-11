@@ -1,7 +1,7 @@
 Notify = new Meteor.Collection('notify'),
 
 Notify.allow({
-	// Notification will only be created through the server
+	// Notification will only be created in the server
 	insert : function(userId, doc) {
 		return false;
 	}

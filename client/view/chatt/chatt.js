@@ -46,7 +46,10 @@ Template.chatt.helpers({
 		}
 	},
 	dialog_body : function() {
-		return this.dialog;
+		var dialog = this.dialog;
+		dialog = dialog.replace(':)', '◕ ◡ ◕')
+			.replace(':(', '◕︵◕').replace(':|', '(ಠ_ಠ)').replace(':p', ':-þ');
+		return dialog;
 	}
 });
 
