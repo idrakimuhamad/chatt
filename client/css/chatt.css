@@ -25,6 +25,7 @@
 *:before,
 *:after {
   -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -238,6 +239,7 @@ body {
   text-shadow: none;
   color: white;
   border-radius: 3px;
+  -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: background .25s;
   transition: background .25s;
@@ -257,6 +259,7 @@ body {
   text-align: center;
   border: 0;
   margin: 0;
+  -webkit-box-shadow: none;
   box-shadow: none;
 }
 
@@ -317,6 +320,7 @@ body {
 #wrapper .dashboard .sidebar .avatar img {
   width: 50px;
   height: auto;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   border-radius: 3em;
 }
@@ -387,6 +391,7 @@ body {
   margin: 0;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 0;
   -webkit-transition: all .25s;
@@ -459,8 +464,8 @@ body {
 }
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog.different-from-above + .same-with-above {
-  padding-top: 0;
-  padding-bottom: 1em;
+  padding-top: .5em;
+  padding-bottom: .5em;
 }
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog.same-with-above {
@@ -483,6 +488,7 @@ body {
 }
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container img.own-by-me {
+  -webkit-box-shadow: 0 0 0 2px #c2d4a0;
   box-shadow: 0 0 0 2px #c2d4a0;
 }
 
@@ -494,16 +500,18 @@ body {
   width: 2.3em;
   height: 2.3em;
   border-radius: 3em;
-  -webkit-transition: box-shadow .25s;
+  -webkit-transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
 }
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container .avatar-circle.own-by-me {
   border: 0;
+  -webkit-box-shadow: 0 0 0 2px #c2d4a0;
   box-shadow: 0 0 0 2px #c2d4a0;
 }
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container:hover .avatar-circle {
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 
@@ -540,6 +548,7 @@ body {
 
 #wrapper .chatt-input .input-content .anon-name {
   border: 0;
+  -webkit-box-shadow: none;
   box-shadow: none;
   padding: 0;
   margin: 0;
@@ -562,11 +571,12 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.15);
   padding: .5em .5em .8em;
   border-radius: 3em;
-  -webkit-transition: box-shadow .25s;
+  -webkit-transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
 }
 
 #wrapper .chatt-input .input-content .avatar-container:hover .avatar-circle {
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 
@@ -575,6 +585,7 @@ body {
 }
 
 #wrapper .chatt-input .input-content .chatt-input-text #chatt-entry textarea {
+  -webkit-box-shadow: none;
   box-shadow: none;
   border: 0;
   padding: 0;
@@ -681,6 +692,7 @@ body {
   font-size: 2em;
   line-height: 2;
   height: 2em;
+  -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: all .25s linear;
   transition: all .25s linear;
@@ -706,6 +718,7 @@ body {
   border: 0;
   width: 80%;
   height: 2em;
+  -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: all .25s linear;
   transition: all .25s linear;
