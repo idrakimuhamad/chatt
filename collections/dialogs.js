@@ -37,7 +37,7 @@ Meteor.methods({
 
 		dialog._id = Dialogs.insert(dialog);
 
-		// createChattNotification(dialog);
+		createChattNotification(dialog);
 
 		return dialog._id;
 	}

@@ -484,17 +484,27 @@ body {
 					}
 
 					&.different-from-above {
+						.dialog-content {
+							padding-left: .5em;
+						}
 						&+.same-with-above {
 							padding-top: .5em;
+<<<<<<< HEAD
 							padding-bottom: .5em;
+=======
+>>>>>>> timestamp
 						}
 					}
 
 					&.same-with-above {
-						padding-left: 2.5em;
+						padding-left: 2.8em;
+						padding-bottom: 1em;
 						&+.same-with-above {
 							padding-top: 0;
+<<<<<<< HEAD
 							padding-bottom: .5em;
+=======
+>>>>>>> timestamp
 						}
 					}
 
@@ -532,6 +542,12 @@ body {
 					}
 					.dialog-content {
 						padding-left: .5em;
+						position: relative;
+						.timestamp {
+							position: absolute;
+							right: 0;
+							font-size: .8em;
+						}
 					}
 				}
 			}
@@ -553,6 +569,7 @@ body {
 			background: $white;
 			padding: .5em 0;
 			border: 1px solid rgba(0,0,0, .15);
+			position: relative;
 
 			.chatt-register {
 				font-size: .8em;
@@ -605,8 +622,24 @@ body {
 					}
 				}
 			}
+			.options {
+				position: absolute;
+				right: -1.5em;
+				top: 0;
+				.notification {
+					cursor: pointer;
+					&.disabled {
+						color: $darkGray;
+					}
+					&.enabled {
+						color: $lightBlue;
+					}
+				}
+			}
 		}
 	}
+
+
 
 	.app-content {
 

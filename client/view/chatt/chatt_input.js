@@ -54,6 +54,9 @@ Template.chatt_input.events({
 			Session.set('anon_user', true);
 		}
 	},
+	'keyup #chatt-entry textarea' : function(e,t) {
+
+	},
 	'keydown #chatt-entry textarea': function (e,t) {
 		if(e.which == 13) {
 			e.preventDefault();
