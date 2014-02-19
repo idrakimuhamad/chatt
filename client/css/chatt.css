@@ -463,18 +463,21 @@ body {
   padding-top: 0;
 }
 
+#wrapper .chatt-container .chatt-content #dialogs .dialog.different-from-above .dialog-content {
+  padding-left: .5em;
+}
+
 #wrapper .chatt-container .chatt-content #dialogs .dialog.different-from-above + .same-with-above {
   padding-top: .5em;
-  padding-bottom: .5em;
 }
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog.same-with-above {
-  padding-left: 2.5em;
+  padding-left: 2.8em;
+  padding-bottom: 1em;
 }
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog.same-with-above + .same-with-above {
   padding-top: 0;
-  padding-bottom: 1em;
 }
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog .avatar-container {
@@ -517,6 +520,13 @@ body {
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog .dialog-content {
   padding-left: .5em;
+  position: relative;
+}
+
+#wrapper .chatt-container .chatt-content #dialogs .dialog .dialog-content .timestamp {
+  position: absolute;
+  right: 0;
+  font-size: .8em;
 }
 
 #wrapper .chatt-input {

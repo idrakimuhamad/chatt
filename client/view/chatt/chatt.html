@@ -15,8 +15,9 @@
 	        					{{#unless same_person}}
 	        					{{> avatar}}
 	        					{{/unless}}
-	        					<div class="dialog-content span11">
+	        					<div class="dialog-content {{#unless same_person}}span11{{/unless}}">
 	        						{{{dialog_body}}}
+	        						<span class="timestamp">{{time}}</span>
 	        					</div>
 	        				</li>
 	        			{{/each}}

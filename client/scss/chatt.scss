@@ -490,17 +490,19 @@ body {
 					}
 
 					&.different-from-above {
+						.dialog-content {
+							padding-left: .5em;
+						}
 						&+.same-with-above {
 							padding-top: .5em;
-							padding-bottom: .5em;
 						}
 					}
 
 					&.same-with-above {
-						padding-left: 2.5em;
+						padding-left: 2.8em;
+						padding-bottom: 1em;
 						&+.same-with-above {
 							padding-top: 0;
-							padding-bottom: 1em;
 						}
 					}
 
@@ -538,6 +540,12 @@ body {
 					}
 					.dialog-content {
 						padding-left: .5em;
+						position: relative;
+						.timestamp {
+							position: absolute;
+							right: 0;
+							font-size: .8em;
+						}
 					}
 				}
 			}
@@ -629,7 +637,7 @@ body {
 		}
 	}
 
-	
+
 
 	.app-content {
 

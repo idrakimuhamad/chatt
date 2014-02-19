@@ -50,6 +50,9 @@ Template.chatt.helpers({
 		dialog = dialog.replace(':)', '◕ ◡ ◕')
 			.replace(':(', '◕︵◕').replace(':|', '(ಠ_ಠ)').replace(':p', ':-þ');
 		return dialog;
+	},
+	time : function() {
+		return moment(this.timestamp).format("h:mm a")
 	}
 });
 
