@@ -9,9 +9,7 @@
 						{{else}}
 						{{#if is_anon_user}}
 						<div class="avatar-container span2">
-						{{#isolate}}
 							<span class="avatar-circle" title="{{name}}">{{first_letter}}</span>
-						{{/isolate}}
 						</div>
 						<div class="chatt-input-text span10">
 							<form id="chatt-entry">
@@ -22,13 +20,11 @@
 						{{else}}
 						{{#if got_account}}
 						<div class="avatar-container span2">
-						{{#isolate}}
 							{{#if avatar_url}}
 							<img src="{{avatar_url}}" alt="Profile Picture" title="{{name}}">
 							{{else}}
 							<span class="avatar-circle" title="{{name}}">{{first_letter}}</span>
 							{{/if}}
-						{{/isolate}}
 						</div>
 						<div class="chatt-input-text span10">
 							<form id="chatt-entry">

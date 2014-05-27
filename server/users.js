@@ -36,11 +36,11 @@ Accounts.onCreateUser(function(options, user) {
 
 });
 
-Accounts.loginServiceConfiguration.remove({
+ServiceConfiguration.configurations.remove({
 	service: "facebook"
 });
 
-Accounts.loginServiceConfiguration.insert({
+ServiceConfiguration.configurations.insert({
 	service: "facebook",
 	appId: "442878555811876",
 	secret: "c470d8bec57e1d1bc49edf5c26dbec79"

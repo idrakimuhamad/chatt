@@ -4,12 +4,13 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-preserve-inputs
 bootstrap
 jquery
-iron-router
 momentjs
 accounts-base
 accounts-password
 accounts-facebook
 http
+service-configuration
+iron-router
+blaze-layout

@@ -5,7 +5,7 @@ Router.map(function() {
 		path: '/',
 		loadingTemplate: 'loading',
 
-		before : function() {
+		onBeforeAction : function() {
 			if (Meteor.user()) {
 				Router.go('dashboard', { username : Meteor.user().username });
 			}
@@ -29,11 +29,13 @@ Router.map(function() {
 			]
 		},
 
-		after : function() {
-			if (Meteor.user().username != this.params.username) {
-				Meteor.logout(function() {
-					Router.go('home');
-				});
+		onAfterAction : function() {
+			if (Meteor.user()) {
+				if (Meteor.user().username != this.params.username) {
+					Meteor.logout(function() {
+						Router.go('home');
+					});
+				}
 			} else if(!Meteor.user()) {
 				Router.go('home');
 			}
@@ -55,7 +57,7 @@ Router.map(function() {
 			]
 		},
 
-		after : function() {
+		onAfterAction : function() {
 			if (!Meteor.user()) {
 				Router.go('home');
 			}
@@ -77,7 +79,7 @@ Router.map(function() {
 			]
 		},
 
-		after : function() {
+		onAfterAction : function() {
 			if (!Meteor.user()) {
 				Router.go('home');
 			}
@@ -102,7 +104,7 @@ Router.map(function() {
 			];
 		},
 
-		after : function() {
+		onAfterAction : function() {
 			Session.set('current_chatt', this.params._id);
 			if(Meteor.user()) {
 				Session.set('chatter', Meteor.user().username);
@@ -111,23 +113,23 @@ Router.map(function() {
 		}
 	});
 
-	this.route('chatt_page', {
-		path: '/chat/:_id',
+	// this.route('chatt_page', {
+	// 	path: '/chat/:_id',
 
-		data : function() {
-			return Chatt.findOne(this.params._id);
-		},
+	// 	data : function() {
+	// 		return Chatt.findOne(this.params._id);
+	// 	},
 
-		waitOn: function () {
-			return [ Meteor.subscribe('selected_chatt', this.params._id),
-				Meteor.subscribe('chatt_dialogs', this.params._id),
-				Meteor.subscribe('notification', this.params._id) ];
-		},
+	// 	waitOn: function () {
+	// 		return [ Meteor.subscribe('selected_chatt', this.params._id),
+	// 			Meteor.subscribe('chatt_dialogs', this.params._id),
+	// 			Meteor.subscribe('notification', this.params._id) ];
+	// 	},
 
-		before : function() {
-			Session.set('current_chatt', this.params._id);
-		}
-	});
+	// 	onBeforeAction : function() {
+	// 		Session.set('current_chatt', this.params._id);
+	// 	}
+	// });
 
 	this.route('notFound', { path: '*' });
 
@@ -140,7 +142,4 @@ Router.configure({
 
 	loadingTemplate: 'loading_normal',
 
-	yieldTemplates: {
-//    	'footer': { to: 'footer' },
-	}
 });

@@ -3,10 +3,10 @@ Session.setDefault('isSignup', true);
 Session.setDefault('isFlip', true);
 
 Template.home.helpers({
-	signup : function () {
+	isSignup : function () {
 		return Session.get('isSignup');
 	},
-	login : function() {
+	isLogin : function() {
 		return !Session.get('isSignup');
 	},
 	page_class : function() {

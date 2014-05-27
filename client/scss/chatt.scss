@@ -2,7 +2,6 @@
 @import "./fontello.css";
 
 /****************************/
-
 /** 	Variables
 /****************************/
 
@@ -17,8 +16,7 @@ $lightBlue : #2DB9CE;
 $lightGreen: #C2D4A0;
 $facebook : #3C599B;
 
-/****************************/
-
+/***************************/
 /**		Mixin
 /***************************/
 
@@ -405,6 +403,7 @@ body {
 			.chatt-list {
 				padding: 1em 0;
 				.create-chatt {
+					margin: 3em 0;
 					.chatt-name {
 						padding: 0 0 .5em 0;
 						width: 80%;
@@ -488,11 +487,7 @@ body {
 							padding-left: .5em;
 						}
 						&+.same-with-above {
-							padding-top: .5em;
-<<<<<<< HEAD
 							padding-bottom: .5em;
-=======
->>>>>>> timestamp
 						}
 					}
 
@@ -501,10 +496,7 @@ body {
 						padding-bottom: 1em;
 						&+.same-with-above {
 							padding-top: 0;
-<<<<<<< HEAD
 							padding-bottom: .5em;
-=======
->>>>>>> timestamp
 						}
 					}
 
