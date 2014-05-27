@@ -466,6 +466,7 @@ body {
 }
 
 #wrapper .chatt-container .chatt-content #dialogs .dialog.different-from-above + .same-with-above {
+  padding-top: 0;
   padding-bottom: .5em;
 }
 

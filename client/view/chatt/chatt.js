@@ -6,10 +6,6 @@ var lastChatterClass = null,
 	lastDialog = null;
 
 Template.chatt.rendered = function () {
-	if(!this.rendered) {
-		this.rendered = true;
-		Session.set('document-title', Chatt.find({}).fetch()[0].chatt);
-	}
 	$(window).scrollTop($(document).height());
 	$('#chatt-entry textarea').focus();
 };
@@ -19,7 +15,10 @@ Template.chatt.helpers({
 		return Session.get('anon_user');
 	},
 	title : function() {
-		return Chatt.find({}).fetch()[0].chatt;
+		if (Chatt.findOne()) {
+			Session.set('document-title', Chatt.findOne().chatt);
+			return Chatt.findOne().chatt;
+		}
 	},
 	dialog : function() {
 		var dialogs = Dialogs.find({}, { sort : { timestamp : -1}, limit : 30 }).fetch();

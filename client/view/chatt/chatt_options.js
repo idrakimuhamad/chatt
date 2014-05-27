@@ -9,23 +9,23 @@ Template.chatt_options.helpers({
                 { sort : { timestamps : -1 }});
 		var notifyCount = notify.count();
 
-        if(Session.get('chatterId') && notifyCount > 0) {
-            createNotification(Session.get('current_chatt'));
-        }
+    if(Session.get('chatterId') && notifyCount > 0) {
+        createNotification(Session.get('current_chatt'));
+    }
 
-        return Session.get('enable_notification');
+    return Session.get('enable_notification');
 	}
 });
 
 Template.chatt_options.events({
 	'click .options .notification' : function(e,t) {
 		e.preventDefault();
-		
-		if(Session.get('enable_notification') !== 'enabled') {
+
+		if(Session.get('enable_notification') === 'enabled') {
 			Session.set('enable_notification', 'disabled');
 		} else {
 			Session.set('enable_notification', 'enabled');
-		}		
-        getNotificationPermission();
+      getNotificationPermission();
     }
+  }
 });

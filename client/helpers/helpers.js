@@ -16,28 +16,43 @@ compare = function(a,b) {
 
 /** Get Chrome Desktop Notification Permission **/
 getNotificationPermission =  function() {
-	if (window.webkitNotifications.checkPermission() != 0)
-		window.webkitNotifications.requestPermission();
+	if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+
+      // Whatever the user answers, we make sure we store the information
+      if(!('permission' in Notification)) {
+        Notification.permission = permission;
+      }
+
+      // If the user is okay, let's create a notification
+      if (permission === "granted") {
+        var notification = new Notification("Notification Enabled");
+      }
+    });
+  } else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var notification = new Notification("Notification Enabled");
+  }
 }
 
 createNotification = function(chattId) {
 	var interval = null;
 
-	if(window.webkitNotifications) {
-		// 0 is PERMISSION_ALLOWED
-		if (window.webkitNotifications.checkPermission() == 0) {
-			var notify = window.webkitNotifications.createNotification(
-			'/images/ajax-loader.gif', 'You got a new Chatt!', '');
-
-			notify.show();
+	if("Notification" in window) {
+		if (Notification.permission === "granted") {
+			var notify = new Notification("You got a new Chatt!", {
+				icon : "/images/ajax-loader.gif"
+			});
 
 			if (isOldTitle) {
 				interval = Meteor.setInterval(changeTitle, 700);
 				isOldTitle = !isOldTitle;
 			}
 
-			notify.ondisplay = Meteor.setTimeout(function () {
-				notify.cancel();
+			notify.onshow = Meteor.setTimeout(function () {
+				notify.close();
 			}, 3000);
 
 			// closing the notification won't mark the message as read
@@ -48,7 +63,7 @@ createNotification = function(chattId) {
 			$(window).focus(function () {
     			$("title").text(oldTitle);
         		clearInterval(interval);
-    			notify.cancel();
+    			notify.close()
     			$('.dialog').removeClass('unseen').delay(200).queue(function() {
 					$(this).dequeue();
 				    Meteor.setTimeout(function() {
@@ -59,7 +74,7 @@ createNotification = function(chattId) {
 			});
 
 		} else {
-			window.webkitNotifications.requestPermission();
+			getNotificationPermission();
 		}
 	} else {
 
@@ -92,7 +107,7 @@ changeTitle = function() {
 
 updateNotify = function(chattId) {
 	Meteor.call('notify', chattId, function (error, result) {
-        if(!error) {
-        }
-    });
+    if(!error) {
+    }
+	});
 }
